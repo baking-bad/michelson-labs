@@ -1,0 +1,22 @@
+language: python
+
+python:
+  - "3.6"
+
+cache:
+  pip: true
+
+install:
+  - pip install nbconvert
+  - pip install git+https://gitlab.com/m-kus/pygments-michelson.git
+
+before_deploy:
+  - jupyter nbconvert notebooks/*.ipynb --CSSHTMLHeaderPreprocessor.style=MichelsonKernelStyle --output-dir static
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: static
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  on:
+    branch: master
