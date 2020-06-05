@@ -2,7 +2,7 @@
 
 ### 1- Working with the stack, basic kernel helpers
 
-- Typology convetions
+- Typology conventions
 - Basic structure of Michelson contract
 - Initial state
 - _PUSH_ instruction
