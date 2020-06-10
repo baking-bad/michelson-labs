@@ -16,7 +16,7 @@
 
 ### 3- Conditional execution, fail operators, useful macros
 
-- Conditionals (_IF_, _IF_LEFT_/_IF_RIGHT_, _IF_NONE_, _IF_CMP_)
+- Conditionals (_IF_, _IF_NONE_, _IFCMP_)
 - _ASSERT_
 - Macros
   - _CMP{EQ|NEQ|LT|GT|LE|GE}_
