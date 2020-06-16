@@ -32,7 +32,7 @@
 
 - mutez type
 - _ADD_, _SUB_, _MUL_, _EDIV_, _COMPARE_
-- _BALANCE_, _AMOUNT_
+- _BALANCE_, _AMOUNT_, _NOW_
 - _TRANSFER_TOKENS_, _ADDRESS_, _CONTRACT_
 
 ### 6- Boolean and cryptographic operations
