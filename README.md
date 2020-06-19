@@ -44,16 +44,33 @@
 
 - string type
 - _CONCAT_, _SLICE_, _SIZE_, _COMPARE_
+- list type
+- *CONS*, *NIL*, *IF_CONS*, *SIZE*
 
-### 8- Pairs: constructing/deconstructing, right/left balanced trees & comparable pairs
+### 8- Pairs: constructing/deconstructing, nested pairs, right/left balanced trees & comparable pairs
+
+- pair type
+- *PAIR*, *CAR*, *CDR*, *COMPARE*, *SET_C[AD]R*, *MAP_C[AD]R*
+- Nested pair macros
 
 ### 9- Cast types, compare, pack/unpack bytes
 
 ### 10- Operation on maps & sets, big_maps
 
+- map, big map and set types
+- difference between map and big map
+- operations on sets: *EMPTY_SET*, *MEM*, *UPDATE*, *SIZE*
+- operations on maps: *EMPTY_MAP*, *GET*, *UPDATE*, *SIZE*
+- operations on big maps: *EMPTY_BIG_MAP*, *GET*, *MEM*, *UPDATE*
+
 ### 11- Iterating collections with ITER, LOOP, MAP & SET macros
 
+- definitions and examples
+
 ### 12- Union type, entrypoints, handling parameters, implementing enum
+
+- or (l) (r)
+- use of *or* for entrypoints
 
 ### 13- Address & contract types, entrypoint address, SELF, SENDER, SOURCE
 
