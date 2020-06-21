@@ -39,6 +39,7 @@
 
 - Boolean types
 - _AND_, _OR_, _XOR_, _NOT_
+- Cryptographic primitives (*HASH_KEY*, *BLAKE2B*, *SHA256*, *SHA512*, *CHECK_SIGNATURE*, *COMPARE*)
 
 ### 7- Operations on strings and lists
 
