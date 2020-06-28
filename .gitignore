@@ -1,5 +1,5 @@
 .ipynb_checkpoints/
 node_modules/
-docs/*.md
+docs/chapters/*.md
 !docs/README.md
 docs/.vuepress/dist
