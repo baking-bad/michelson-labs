@@ -21,14 +21,14 @@ module.exports = {
         collapsable: true,
         sidebarDepth: 2,
         children: [
-          '/chapters/one',
-          '/chapters/two',
-          '/chapters/three',
-          '/chapters/four',
-          '/chapters/five',
-          '/chapters/six',
-          '/chapters/seven',
-          '/chapters/eight',
+          '/chapters/01',
+          '/chapters/02',
+          '/chapters/03',
+          '/chapters/04',
+          '/chapters/05',
+          '/chapters/06',
+          '/chapters/07',
+          '/chapters/08',
         ]
       },
     ]
