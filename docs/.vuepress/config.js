@@ -46,6 +46,16 @@ module.exports = {
           /(?:0x[0-9a-f]+)(?=\s|;|\}|\)|$)/i,
           /"(?:[^\\]|\\.)*?(?:"|$)/,
           /(?:Unit|True|False|Pair|Left|Right|Some|None|Elt)(?=\s|;|\)|$)/,
+        ],       
+        'variable': [
+          /(?:IF_SOME|FAIL|ASSERT|ASSERT_NONE|ASSERT_SOME|ASSERT_LEFT|ASSERT_RIGHT|UNPAIR|(?:SET|MAP)_C[AD]+R)(?=\s|;|\}|$)/,
+          /(?:DII+P|C[AD]{2,}R|DUU+P|P[PAI]{3,}R|UNP[PAI]{3,}R)(?=\s|;|\}|$)/,
+          /(?:(?:CMP|IF|IFCMP|ASSERT_|ASSERT_CMP)(?:EQ|NEQ|LT|GT|LE|GE))(?=\s|;|\}|\{|$)/
+        ],
+        'attr-name': [
+          /(?:%[A-z_0-9%@]*)(?=\s|\)|\}|$)/,
+          /(?:@[A-z_0-9%]+)(?=\s|\)|\}|$)/,
+          /(?::[A-z_0-9]+)(?=\s|\)|\}|$)/
         ],
         'keyword': [
           /(?:parameter|storage|code)(?=\s|$)/,
@@ -58,17 +68,7 @@ module.exports = {
         'class-name': [
           /(?:option|list|set|contract|pair|or|lambda|map|big_map)(?=\s|\)|$)/,
           /(?:key|unit|signature|operation|address|int|nat|string|bytes|mutez|bool|key_hash|timestamp|chain_id)(?=\s|\)|\}|;|$)/
-        ],
-        'variable': [
-          /(?:IF_SOME|FAIL|ASSERT|ASSERT_NONE|ASSERT_SOME|ASSERT_LEFT|ASSERT_RIGHT|UNPAIR|(?:SET|MAP)_C[AD]+R)(?=\s|;|\}|$)/,
-          /(?:DII+P|C[AD]{2,}R|DUU+P|P[PAI]{3,}R|UNP[PAI]{3,}R)(?=\s|;|\}|$)/,
-          /(?:(?:CMP|IF|IFCMP|ASSERT_|ASSERT_CMP)(?:EQ|NEQ|LT|GT|LE|GE))(?=\s|;|\}|\{|$)/
-        ],
-        'attr-name': [
-          /(?:%[A-z_0-9%@]*)(?=\s|\)|\}|$)/,
-          /(?:@[A-z_0-9%]+)(?=\s|\)|\}|$)/,
-          /(?::[A-z_0-9]+)(?=\s|\)|\}|$)/
-        ] 
+        ]
       };
     }})
   }
