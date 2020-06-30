@@ -40,7 +40,7 @@ module.exports = {
           pattern: /#.*/,
           greedy: true
         },
-        'punctuation': /[;\{\(\s]/,
+        'punctuation': /[;\{\(\s\)\}]/,
         'number': [
           /(?:[+-]?[0-9]+\.?[0-9]*)(?=\s|;|\}|\)|$)/,
           /(?:0x[0-9a-f]+)(?=\s|;|\}|\)|$)/i,

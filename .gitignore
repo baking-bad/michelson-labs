@@ -3,3 +3,4 @@ node_modules/
 docs/chapters/*.md
 !docs/README.md
 docs/.vuepress/dist
+__pycache__/
