@@ -14,13 +14,17 @@ module.exports = {
     displayAllHeaders: true,
     nav: [
       { text: "Home", link: "/" },
+      { text: "Learn", link: "/learn" },
+      { text: "Tutorials", link: "/tutorials"}
     ],
     sidebar: [
+      ['/learn', 'Learn Michelson'],
       {
-        title: 'Chapters',
+        title: 'Tutorials',
         collapsable: true,
         sidebarDepth: 2,
         children: [
+          '/tutorials',
           '/chapters/01',
           '/chapters/02',
           '/chapters/03',
@@ -29,8 +33,17 @@ module.exports = {
           '/chapters/06',
           '/chapters/07',
           '/chapters/08',
+          '/michelson_kernel'
         ]
       },
+      {
+        title: 'Advanced',
+        collapsable: true,
+        sidebarDepth: 3,
+        children: [
+          '/advanced/01'
+        ]
+      }
     ]
   },
   extendMarkdown: md => {

@@ -8,6 +8,8 @@ markdown:
 	cd docs/chapters && sed -i 's/&quot;/"/g' *.md
 	cd docs/chapters && sed -r -i 's/^>\sNote:\s(.*)$$/::: warning NOTE\n\1\n:::/g' *.md
 	cd docs/chapters && sed -r -i 's/^>\sTip:\s(.*)$$/::: tip\n\1\n:::/g' *.md
+	jupyter nbconvert notebooks/michelson_kernel.ipynb --TemplateExporter.template_file=michelson.tpl --to markdown --output-dir docs
+	cd docs && sed -i 's/&quot;/"/g' *.md
 
 build:
 	yarn build
