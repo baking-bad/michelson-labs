@@ -15,14 +15,15 @@ module.exports = {
     nav: [
       { text: "Home", link: "/" },
       { text: "Learn", link: "/learn" },
-      { text: "Tutorials", link: "/tutorials"}
+      { text: "Tutorials", link: "/tutorials"},
+      { text: "Examples", link: "/examples"}
     ],
     sidebar: [
       ['/learn', 'Learn Michelson'],
       {
         title: 'Tutorials',
         collapsable: true,
-        sidebarDepth: 2,
+        sidebarDepth: 1,
         children: [
           '/tutorials',
           '/chapters/01',
@@ -33,14 +34,15 @@ module.exports = {
           '/chapters/06',
           '/chapters/07',
           '/chapters/08',
-          '/michelson_kernel'
+          '/chapters/michelson_kernel'
         ]
       },
       {
-        title: 'Advanced',
+        title: 'Examples',
         collapsable: true,
-        sidebarDepth: 3,
+        sidebarDepth: 1,
         children: [
+          '/examples',
           '/advanced/01'
         ]
       }

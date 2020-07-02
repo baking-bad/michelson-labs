@@ -1,15 +1,28 @@
 # Learn Michelson
 
-## Why
+## Why 🤔
+
 
 ## Self-paced learning
 
 ## Enroll in a course
+Soon
 
-## Useful links
+## Resources
 
-### Michelson reference
+#### Michelson reference
 https://michelson.nomadic-labs.com/
 
-### Michelson specification
+#### Michelson specification
 https://tezos.gitlab.io/whitedoc/michelson.html
+
+#### Michelson Slack channel
+https://tezos-dev.slack.com/archives/C69RKF3PG
+
+#### Jupyter kernel
+https://github.com/baking-bad/michelson-kernel
+
+#### Michelson sandbox
+https://try-michelson.tzalpha.net/
+
+## Contact us
