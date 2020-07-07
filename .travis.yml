@@ -8,8 +8,6 @@ cache:
   pip: true
 
 install:
-  - apt install rename -y
-  - pip install nbconvert
   - make install
 
 before_deploy:

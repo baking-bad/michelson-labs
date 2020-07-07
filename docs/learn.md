@@ -5,9 +5,6 @@
 
 ## Self-paced learning
 
-## Enroll in a course
-Soon
-
 ## Resources
 
 #### Michelson reference

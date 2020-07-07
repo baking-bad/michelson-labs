@@ -51,15 +51,21 @@ module.exports = {
   extendMarkdown: md => {
     md.use(require('markdown-it-prism'), {init: function(Prism) {
       Prism.languages.Michelson = {
+        'punctuation': /[;\{\(\s\)\}]/,
         'comment': {
           pattern: /#.*/,
           greedy: true
         },
-        'punctuation': /[;\{\(\s\)\}]/,
         'number': [
-          /(?:[+-]?[0-9]+\.?[0-9]*)(?=\s|;|\}|\)|$)/,
+          {
+            pattern: /(^|\s|\()(?:[+-]?[0-9]+\.?[0-9]*)(?=\s|;|\}|\)|$)/,
+            lookbehind: true
+          },
           /(?:0x[0-9a-f]+)(?=\s|;|\}|\)|$)/i,
-          /"(?:[^\\]|\\.)*?(?:"|$)/,
+          {
+            pattern: /"(?:[^\\]|\\.)*?(?:"|$)/,
+            greedy: true
+          },
           /(?:Unit|True|False|Pair|Left|Right|Some|None|Elt)(?=\s|;|\)|$)/,
         ],       
         'variable': [

@@ -11,3 +11,9 @@
 {{ output.data['text/html'] }}
 </div>
 {% endblock data_html %}
+
+{% block data_text %}
+<div class="result">
+    <pre><span class="stream-name">result</span>{{ output.data['text/plain'] | e }}</pre>
+</div>
+{% endblock data_text %}
