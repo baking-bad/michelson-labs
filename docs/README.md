@@ -2,7 +2,7 @@
 home: true
 heroImage: /logo.png
 heroText: Michelson Labs
-tagline: Series of Jupyter notebooks for learning Tezos native contract language
+tagline: Series of Jupyter notebooks for learning the Tezos native contract language
 actionText: Get Started →
 actionLink: /learn
 features:

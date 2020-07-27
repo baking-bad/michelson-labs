@@ -37,15 +37,15 @@ module.exports = {
           '/chapters/michelson_kernel'
         ]
       },
-      {
-        title: 'Examples',
-        collapsable: true,
-        sidebarDepth: 1,
-        children: [
-          '/examples',
-          '/advanced/01'
-        ]
-      }
+      // {
+      //   title: 'Examples',
+      //   collapsable: true,
+      //   sidebarDepth: 1,
+      //   children: [
+      //     '/examples',
+      //     '/advanced/01'
+      //   ]
+      // }
     ]
   },
   extendMarkdown: md => {
