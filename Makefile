@@ -6,8 +6,8 @@ run:
 
 install:
 	yarn
-	pip install nbconvert --user
-	apt install rename -y
+	pip install nbconvert
+	sudo apt install rename -y
 
 postprocess:
 	cd $$MDIR && rename 's/^([0-9]+).*/$$1.md/' *.md
