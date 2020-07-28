@@ -21,9 +21,12 @@
   "homepage": "https://michelson.baking-bad.org",
   "dependencies": {
     "markdown-it-prism": "^2.0.5",
-    "vue-fab": "^2.3.1"
+    "vue-fab": "^2.3.1",
+    "vuepress-plugin-autometa": "^0.1.13",
+    "vuepress-plugin-sitemap": "^2.3.1"
   },
   "devDependencies": {
+    "@vuepress/plugin-google-analytics": "^1.5.2",
     "vuepress": "^1.4.0",
     "vuepress-plugin-clean-urls": "^1.1.1",
     "vuepress-theme-book": "0.0.1"

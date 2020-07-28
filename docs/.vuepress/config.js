@@ -37,6 +37,11 @@ module.exports = {
           '/chapters/06',
           '/chapters/07',
           '/chapters/08',
+          '/chapters/09',
+          '/chapters/10',
+          '/chapters/11',
+          '/chapters/12',
+          '/chapters/13',
           '/chapters/99'
         ]
       },
@@ -51,6 +56,21 @@ module.exports = {
       // }
     ]
   },
+  plugins: [
+    ['autometa', {
+      site: {
+        name: 'Michelson Labs',
+        twitter: 'TezosBakingBad',
+      },
+      canonical_base: 'https://baking-bad.org/blog',
+    }],
+    ['sitemap', {
+      hostname: 'https://michelson.baking-bad.org'
+    }],
+    ['@vuepress/google-analytics', {
+        'ga': 'UA-131043773-1'
+    }],
+  ],
   extendMarkdown: md => {
     md.use(require('markdown-it-prism'), {init: function(Prism) {
       Prism.languages.Michelson = {
