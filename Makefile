@@ -1,5 +1,9 @@
 .PHONY: docs
 
+run:
+	docker pull bakingbad/michelson-kernel
+	docker run --rm -it -p 127.0.0.1:8888:8888 -v $$(pwd)/notebooks:/home/jupyter/notebooks bakingbad/michelson-kernel
+
 install:
 	yarn
 	pip install nbconvert

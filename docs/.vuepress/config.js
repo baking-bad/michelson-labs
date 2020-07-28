@@ -4,6 +4,9 @@ module.exports = {
   title: "Michelson Labs",
   description: "Interactive learning course",
   theme: "vuepress-theme-book",
+  head: [
+    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon.png"}],
+  ],
   themeConfig: {
     logo: "/logo.png",
     searchPlaceholder: "Search...",
@@ -15,17 +18,17 @@ module.exports = {
     nav: [
       { text: "Home", link: "/" },
       { text: "Learn", link: "/learn" },
-      { text: "Tutorials", link: "/tutorials"},
-      { text: "Examples", link: "/examples"}
+      { text: "Notebooks ", link: "/introduction"},
+      // { text: "Examples", link: "/examples"}
     ],
     sidebar: [
       ['/learn', 'Learn Michelson'],
       {
-        title: 'Tutorials',
+        title: 'Notebooks',
         collapsable: true,
         sidebarDepth: 1,
         children: [
-          '/tutorials',
+          '/introduction',
           '/chapters/01',
           '/chapters/02',
           '/chapters/03',
@@ -34,7 +37,7 @@ module.exports = {
           '/chapters/06',
           '/chapters/07',
           '/chapters/08',
-          '/chapters/michelson_kernel'
+          '/chapters/99'
         ]
       },
       // {

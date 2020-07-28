@@ -11,6 +11,6 @@ features:
 - title: Self-paced learning
   details: Run tutorials one by one in the interactive Jupyter environment, check yourself using assignments at the end of each chapter.
 - title: Enroll in a course (soon)
-  details: Choose one of the training organizations and get access to the online workspace, mentor assistance, and automatic homework evaluation. At the end of the course you will receive a non-fungible badge.
+  details: Choose one of the training organizations and get access to the online workspace, mentor assistance, and automatic homework evaluation. At the end of the course you will receive a Tezos-issued badge.
 footer: CC BY-SA 4.0 Licensed | Copyright © 2020-present Baking Bad
 ---
