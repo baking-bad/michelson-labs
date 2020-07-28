@@ -6,7 +6,7 @@ run:
 
 install:
 	yarn
-	pip install nbconvert
+	pip install nbconvert --user
 	apt install rename -y
 
 postprocess:
