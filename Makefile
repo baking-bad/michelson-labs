@@ -18,11 +18,10 @@ postprocess:
 docs:
 	rm docs/chapters/*.md || true
 	jupyter nbconvert notebooks/tutorials/**/*.ipynb --TemplateExporter.template_file=jupyter.tpl --Exporter.preprocessors='["preprocess.RemoveExerciceCells", "preprocess.AddBinderComponent"]' --to markdown --output-dir docs/chapters
-	jupyter nbconvert notebooks/tutorials/michelson_kernel.ipynb --TemplateExporter.template_file=jupyter.tpl --Exporter.preprocessors=[\"preprocess.AddBinderComponent\"] --to markdown --output-dir docs/chapters
 	MDIR=docs/chapters $(MAKE) postprocess
 	rm docs/advanced/*.md || true
-	jupyter nbconvert notebooks/examples/*.ipynb --TemplateExporter.template_file=jupyter.tpl --Exporter.preprocessors=[\"preprocess.AddBinderComponent\"] --to markdown --output-dir docs/advanced
-	MDIR=docs/advanced $(MAKE) postprocess
+	# jupyter nbconvert notebooks/examples/*.ipynb --TemplateExporter.template_file=jupyter.tpl --Exporter.preprocessors=[\"preprocess.AddBinderComponent\"] --to markdown --output-dir docs/advanced
+	# MDIR=docs/advanced $(MAKE) postprocess
 
 build:
 	yarn build
