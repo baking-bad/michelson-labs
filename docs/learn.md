@@ -1,3 +1,8 @@
+---
+title: Learn | Michelson Labs
+summary: Why learning Michelson might be a good idea and how this course can help you with that.
+---
+
 # Learn Michelson
 Welcome to the interactive Michelson learning course!   
 
@@ -47,6 +52,11 @@ Here are some useful links that will complement your knowledge:
 * Michelson Slack channel [https://tezos-dev.slack.com/archives/C69RKF3PG](https://tezos-dev.slack.com/archives/C69RKF3PG)
 * Michelson playground [https://try-michelson.tzalpha.net/](https://try-michelson.tzalpha.net/)
 * Jupyter kernel [https://github.com/baking-bad/michelson-kernel](https://github.com/baking-bad/michelson-kernel)
+
+Introduction to Michelson by Claude Barde:
+* [Part 1](https://medium.com/better-programming/introduction-to-michelson-the-language-of-tezos-part-1-374c03394cc3)
+* [Part 2](https://medium.com/better-programming/an-introduction-to-michelson-the-scripting-language-of-tezos-part-2-4cc972c8237c)
+* [Part 3](https://medium.com/coinmonks/an-introduction-to-michelson-the-scripting-language-of-tezos-part-3-70bb294cd19e)
 
 ## Contact us
 If you have any questions regarding the tutorials, Michelson kernel, or you spotted a bug — please reach us:

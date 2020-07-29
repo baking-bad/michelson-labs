@@ -28,7 +28,7 @@ module.exports = {
         collapsable: true,
         sidebarDepth: 1,
         children: [
-          '/introduction',
+          ['/introduction', 'Introduction'],
           '/chapters/01',
           '/chapters/02',
           '/chapters/03',
@@ -115,5 +115,20 @@ module.exports = {
         ]
       };
     }})
+  },
+  extendPageData(pageCtx) {    
+    if (!pageCtx.frontmatter.title) {
+      pageCtx.frontmatter.title = `${pageCtx.title} | Michelson Labs`;
+
+      if (pageCtx._strippedContent) {
+        pageCtx.frontmatter.summary = pageCtx._strippedContent
+          .split("\n")
+          .find(line => line.length > 20 && !line.startsWith("#"))
+      }
+    }
+
+    pageCtx.frontmatter.image = "/public/og.png";
+    pageCtx.frontmatter.metaTitle = pageCtx.frontmatter.title;
+    pageCtx.frontmatter.description = pageCtx.frontmatter.summary
   }
 }
