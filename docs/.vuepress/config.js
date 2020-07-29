@@ -62,7 +62,7 @@ module.exports = {
         name: 'Michelson Labs',
         twitter: 'TezosBakingBad',
       },
-      canonical_base: 'https://baking-bad.org/blog',
+      canonical_base: 'https://michelson.baking-bad.org',
     }],
     ['sitemap', {
       hostname: 'https://michelson.baking-bad.org'
