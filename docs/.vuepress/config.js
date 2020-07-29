@@ -127,7 +127,7 @@ module.exports = {
       }
     }
 
-    pageCtx.frontmatter.image = "/public/og.png";
+    pageCtx.frontmatter.image = "/og.png";
     pageCtx.frontmatter.metaTitle = pageCtx.frontmatter.title;
     pageCtx.frontmatter.description = pageCtx.frontmatter.summary
   }
