@@ -1,1 +1,8 @@
 .ipynb_checkpoints/
+node_modules/
+docs/chapters/*.md
+docs/advanced/*.md
+!docs/README.md
+docs/.vuepress/dist
+__pycache__/
+yarn-error.log

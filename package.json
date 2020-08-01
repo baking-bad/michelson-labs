@@ -1,0 +1,37 @@
+{
+  "name": "michelson-labs",
+  "version": "1.0.0",
+  "description": "Michelson interactive course",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "vuepress dev docs --host localhost",
+    "build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baking-bad/michelson-labs.git"
+  },
+  "author": "Baking Bad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/baking-bad/michelson-labs/issues"
+  },
+  "homepage": "https://michelson.baking-bad.org",
+  "dependencies": {
+    "markdown-it-prism": "^2.0.5",
+    "vue-fab": "^2.3.1",
+    "vuepress-plugin-autometa": "^0.1.13",
+    "vuepress-plugin-sitemap": "^2.3.1"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-google-analytics": "^1.5.2",
+    "vuepress": "^1.4.0",
+    "vuepress-plugin-clean-urls": "^1.1.1",
+    "vuepress-theme-book": "0.0.1"
+  },
+  "resolutions": {
+    "watchpack": "1.6.1"
+  }
+}
