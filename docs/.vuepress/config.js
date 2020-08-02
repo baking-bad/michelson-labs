@@ -42,6 +42,7 @@ module.exports = {
           '/chapters/11',
           '/chapters/12',
           '/chapters/13',
+          '/chapters/14',
           '/chapters/99'
         ]
       },
