@@ -2,7 +2,7 @@ const path = require("path")
 
 module.exports = {
   title: "Michelson Labs",
-  description: "Interactive learning course",
+  description: "Series of Jupyter notebooks for learning the Tezos native contract language",
   theme: "vuepress-theme-book",
   head: [
     ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon.png"}],
@@ -19,7 +19,7 @@ module.exports = {
       { text: "Home", link: "/" },
       { text: "Learn", link: "/learn" },
       { text: "Notebooks ", link: "/introduction"},
-      // { text: "Examples", link: "/examples"}
+      { text: "About", link: "https://baking-bad.org/docs"}
     ],
     sidebar: [
       ['/learn', 'Learn Michelson'],
