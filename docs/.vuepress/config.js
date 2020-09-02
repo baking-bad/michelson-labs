@@ -8,7 +8,7 @@ module.exports = {
     ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon.png"}],
   ],
   themeConfig: {
-    logo: "/logo.png",
+    logo: "/logo_small.png",
     searchPlaceholder: "Search...",
     lastUpdated: "Last Updated",
     docsRepo: "baking-bad/michelson-labs",
