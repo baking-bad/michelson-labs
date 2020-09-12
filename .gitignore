@@ -7,3 +7,4 @@ docs/.vuepress/dist
 __pycache__/
 yarn-error.log
 .DS_Store
+.pytest_cache/
