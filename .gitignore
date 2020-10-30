@@ -1,7 +1,6 @@
 .ipynb_checkpoints/
 node_modules/
-docs/chapters/*.md
-docs/advanced/*.md
+docs/**/[0-9]*.md
 !docs/README.md
 docs/.vuepress/dist
 __pycache__/

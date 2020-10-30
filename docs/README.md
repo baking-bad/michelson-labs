@@ -1,13 +1,13 @@
 ---
 home: true
 heroImage: /logo.png
-heroText: Michelson Labs
-tagline: Series of Jupyter notebooks for learning the Tezos native contract language
+heroText: Tezos Labs
+tagline: Series of Jupyter notebooks for training in Tezos development & analysis
 actionText: Get Started →
 actionLink: /learn
 features:
 - title: Use as documentation
-  details: Use the table of contents and site search to find the section you are interested in. The materials on this site harmoniously complement the language specification and reference.
+  details: Use the table of contents and site search to find the section you are interested in. The materials on this site harmoniously complement Tezos documentation and formal specifications.
 - title: Self-paced learning
   details: Run tutorials one by one in the interactive Jupyter environment, check yourself using assignments at the end of each chapter.
 - title: Enroll in a course (soon)

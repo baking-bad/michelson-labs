@@ -1,8 +1,8 @@
 const path = require("path")
 
 module.exports = {
-  title: "Michelson Labs",
-  description: "Series of Jupyter notebooks for learning the Tezos native contract language",
+  title: "Tezos Labs",
+  description: "Series of Jupyter notebooks for training in Tezos development & analysis",
   theme: "vuepress-theme-book",
   head: [
     ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon.png"}],
@@ -16,52 +16,65 @@ module.exports = {
     editLinks: false,
     displayAllHeaders: true,
     nav: [
-      { text: "Home", link: "/" },
-      { text: "Learn", link: "/learn" },
-      { text: "Notebooks ", link: "/introduction"},
-      { text: "About", link: "https://baking-bad.org/docs"}
+      { text: "Michelson language ", link: "/michelson_language"},
+      { text: "Contract interaction", link: "/pytezos/01"},
+      { text: "Baking Bad", link: "https://baking-bad.org/docs"}
     ],
     sidebar: [
-      ['/learn', 'Learn Michelson'],
+      ['/learn', 'How to use this course'],
       {
-        title: 'Notebooks',
+        title: 'Michelson language',
         collapsable: true,
         sidebarDepth: 1,
         children: [
-          ['/introduction', 'Introduction'],
-          '/chapters/01',
-          '/chapters/02',
-          '/chapters/03',
-          '/chapters/04',
-          '/chapters/05',
-          '/chapters/06',
-          '/chapters/07',
-          '/chapters/08',
-          '/chapters/09',
-          '/chapters/10',
-          '/chapters/11',
-          '/chapters/12',
-          '/chapters/13',
-          '/chapters/14',
-          '/chapters/15',
-          '/chapters/99'
+          ['/michelson_language', 'Introduction'],
+          '/michelson/01',
+          '/michelson/02',
+          '/michelson/03',
+          '/michelson/04',
+          '/michelson/05',
+          '/michelson/06',
+          '/michelson/07',
+          '/michelson/08',
+          '/michelson/09',
+          '/michelson/10',
+          '/michelson/11',
+          '/michelson/12',
+          '/michelson/13',
+          '/michelson/14',
+          '/michelson/15',
+          '/michelson/99'
         ]
       },
-      // {
-      //   title: 'Examples',
-      //   collapsable: true,
-      //   sidebarDepth: 1,
-      //   children: [
-      //     '/examples',
-      //     '/advanced/01'
-      //   ]
-      // }
+      {
+        title: 'Contract interaction',
+        collapsable: true,
+        sidebarDepth: 1,
+        children: [
+          '/pytezos/01',
+          '/pytezos/02'
+        ]
+      },
+      {
+        title: 'Contract testing',
+        collapsable: true,
+        sidebarDepth: 1,
+        children: [
+        ]
+      },
+      {
+        title: 'Blockchain analysis',
+        collapsable: true,
+        sidebarDepth: 1,
+        children: [
+        ]
+      }
     ]
   },
   plugins: [
     ['autometa', {
       site: {
-        name: 'Michelson Labs',
+        name: 'Tezos Labs',
         twitter: 'TezosBakingBad',
       },
       canonical_base: 'https://michelson.baking-bad.org',
