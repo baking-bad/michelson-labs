@@ -1,80 +1,59 @@
-## Notebooks Tutorial Plan
+# Tezos Labs
+Welcome to the Tezos Labs interactive learning course!   
 
-### 1- Working with the stack, basic kernel helpers
+It consists of a series of [Jupyter notebooks](https://jupyter.org/). Code snippets from the notebooks can be executed both online and locally. Also, you can write code yourself — there are exercises at the end of several tutorials for self-evaluation.  
 
-- Typology conventions
-- Basic structure of Michelson contract
-- Initial state
-- _PUSH_ instruction
-- Final state
-- Notebook how-to and instructions: _BEGIN_, _DUMP_, _COMMIT_
+## Run online
+In order to feel what interactive notebooks are you can open course chapters in the Binder service, that provides a temporary Jupyter environment.
 
-### 2- Advanced stack usage, stack-protecting instructions, types
+![Open in Binder](docs/.vuepress/public/binder.gif)
 
-- More instructions (_DIP_, _DUP_, _CAR_/_CDR_, _SWAP_, _CONCAT_, _PAIR_, _DIG_, etc.)
-- Introduction to types in Michelson
+::: warning NOTE
+Your changes won't be saved unless you download the notebook to your computer.  
+For regular use consider local setup (options below).
+:::
 
-### 3- Conditional execution, fail operators, useful macros
+## Run in Docker
 
-- Conditionals (_IF_, _IF_NONE_, _IFCMP_)
-- _ASSERT_
-- Macros
-  - _CMP{EQ|NEQ|LT|GT|LE|GE}_
-  - _IFCMP{EQ|NEQ|LT|GT|LE|GE}_
-- _FAIL_
+Ensure you have [Docker](https://docs.docker.com/get-docker/) installed.
 
-### 4- Arithmetic (int, nat) operations, handling optionals
+```
+docker pull bakingbad/michelson-kernel
+docker run --rm -it -p 127.0.0.1:8888:8888 -v $(pwd):/home/jupyter/notebooks bakingbad/michelson-kernel
+```
 
-- _ADD_, _SUB_, _MUL_, _EDIV_, _NEG_, _ISNAT_, _NAT_, _ABS_
-- _SOME_, _NONE_, _IF_NONE_
+Open _http://127.0.0.1:8888_ in your browser.  
 
-### 5- Working with mutez & timestamps, BALANCE, AMOUNT, NOW
+Note, that the _notebooks_ folder is mounted to your local filesystem by default, so you won't loose any changes made.
 
-- mutez type
-- _ADD_, _SUB_, _MUL_, _EDIV_, _COMPARE_
-- _BALANCE_, _AMOUNT_, _NOW_
-- _TRANSFER_TOKENS_, _ADDRESS_, _CONTRACT_
+## Run locally
 
-### 6- Boolean and cryptographic operations
+First of all, install several crypto libraries:
+* Ubuntu: `sudo apt install libsodium-dev libsecp256k1-dev libgmp-dev`
+* MacOS: `brew install libsodium libsecp256k1 gmp`
+* Windows: follow the [guide](https://github.com/baking-bad/pytezos#windows)
 
-- Boolean types
-- _AND_, _OR_, _XOR_, _NOT_
-- Cryptographic primitives (*HASH_KEY*, *BLAKE2B*, *SHA256*, *SHA512*, *CHECK_SIGNATURE*, *COMPARE*)
+Ensure you have a suitable Python version (3.5+). 
+The recomended way is [pyenv](https://github.com/pyenv/pyenv-installer).
+Make sure you have installed all the [dependencies](https://github.com/pyenv/pyenv/wiki/Common-build-problems) first.
 
-### 7- Operations on strings and lists
+```
+pip install jupyter michelson-kernel
+jupyter notebook
+```
 
-- string type
-- _CONCAT_, _SLICE_, _SIZE_, _COMPARE_
-- list type
-- *CONS*, *NIL*, *IF_CONS*, *SIZE*
+Open the link from the command output, create new notebook with Michelson kernel.
 
-### 8- Pairs: constructing/deconstructing, nested pairs, right/left balanced trees & comparable pairs
+## Contact us
+If you have any questions regarding the tutorials, Michelson kernel, PyTezos library, TzKT API, or you spotted a bug — please reach us:
+* Telegram [https://t.me/baking_bad_chat](https://t.me/baking_bad_chat)
+* Slack [https://tezos-dev.slack.com/archives/CV5NX7F2L](https://tezos-dev.slack.com/archives/CV5NX7F2L)
+* Email [hello@baking-bad.org](mailto://hello@baking-bad.org)
 
-- pair type
-- *PAIR*, *CAR*, *CDR*, *COMPARE*, *SET_C[AD]R*, *MAP_C[AD]R*
-- Nested pair macros
+## About
 
-### 9- Cast types, compare, pack/unpack bytes
+This educational project is supported by [Tezos Foundation](https://tezos.foundation). 
 
-### 10- Operation on maps & sets, big_maps
-
-- map, big map and set types
-- difference between map and big map
-- operations on sets: *EMPTY_SET*, *MEM*, *UPDATE*, *SIZE*
-- operations on maps: *EMPTY_MAP*, *GET*, *UPDATE*, *SIZE*
-- operations on big maps: *EMPTY_BIG_MAP*, *GET*, *MEM*, *UPDATE*
-
-### 11- Iterating collections with ITER, LOOP, MAP & SET macros
-
-- definitions and examples
-
-### 12- Union type, entrypoints, handling parameters, implementing enum
-
-- or (l) (r)
-- use of *or* for entrypoints
-
-### 13- Address & contract types, entrypoint address, SELF, SENDER, SOURCE
-
-### 14- Internal operations: delegation, origination, transaction
-
-### 15- Lambdas, partial application
+*Michelson tutorials: [Claude Barde](https://github.com/claudebarde)*  
+*PyTezos tutorials: [Michael Zaikin](https://github.com/m-kus)*  
+*Educational platform: [Baking Bad](https://baking-bad.org/docs)*
