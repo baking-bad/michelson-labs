@@ -44,26 +44,6 @@ jupyter notebook
 
 Open the link from the command output, create new notebook with Michelson kernel.
 
-## Contribute
-
-Install dependencies:
-
-```
-make install
-```
-
-Convert notebooks to markdown files:
-
-```
-make docs
-```
-
-Run local service:
-
-```
-make dev
-```
-
 ## Contact us
 If you have any questions regarding the tutorials, Michelson kernel, PyTezos library, TzKT API, or you spotted a bug — please reach us:
 * Telegram [https://t.me/baking_bad_chat](https://t.me/baking_bad_chat)
