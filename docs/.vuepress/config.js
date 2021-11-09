@@ -11,7 +11,7 @@ module.exports = {
     logo: "/logo_small.png",
     searchPlaceholder: "Search...",
     lastUpdated: "Last Updated",
-    docsRepo: "baking-bad/michelson-labs",
+    docsRepo: "baking-bad/tezos-labs",
     docsDir: "docs",
     editLinks: false,
     displayAllHeaders: true,
