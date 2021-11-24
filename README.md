@@ -1,80 +1,52 @@
-## Notebooks Tutorial Plan
+# Michelson Labs
 
-### 1- Working with the stack, basic kernel helpers
+![Notebook](docs/.vuepress/public/notebook.gif)
 
-- Typology conventions
-- Basic structure of Michelson contract
-- Initial state
-- _PUSH_ instruction
-- Final state
-- Notebook how-to and instructions: _BEGIN_, _DUMP_, _COMMIT_
+Series of Jupyter notebooks for learning the Tezos native contract language.
 
-### 2- Advanced stack usage, stack-protecting instructions, types
+## Run notebooks
 
-- More instructions (_DIP_, _DUP_, _CAR_/_CDR_, _SWAP_, _CONCAT_, _PAIR_, _DIG_, etc.)
-- Introduction to types in Michelson
+Clone this repo and cd in, then:
 
-### 3- Conditional execution, fail operators, useful macros
+```
+docker pull bakingbad/michelson-kernel
+docker run --rm -it -p 127.0.0.1:8888:8888 -v $(pwd):/home/jupyter/notebooks bakingbad/michelson-kernel
+```
 
-- Conditionals (_IF_, _IF_NONE_, _IFCMP_)
-- _ASSERT_
-- Macros
-  - _CMP{EQ|NEQ|LT|GT|LE|GE}_
-  - _IFCMP{EQ|NEQ|LT|GT|LE|GE}_
-- _FAIL_
+or just 
 
-### 4- Arithmetic (int, nat) operations, handling optionals
+```
+make run
+```
 
-- _ADD_, _SUB_, _MUL_, _EDIV_, _NEG_, _ISNAT_, _NAT_, _ABS_
-- _SOME_, _NONE_, _IF_NONE_
+## Contribute
 
-### 5- Working with mutez & timestamps, BALANCE, AMOUNT, NOW
+Fist of all, make sure all dependencies are installed:
+```
+make install
+```
 
-- mutez type
-- _ADD_, _SUB_, _MUL_, _EDIV_, _COMPARE_
-- _BALANCE_, _AMOUNT_, _NOW_
-- _TRANSFER_TOKENS_, _ADDRESS_, _CONTRACT_
+If you are editing notebooks, you need to save & render them afterwards:
+```
+make docs
+```
 
-### 6- Boolean and cryptographic operations
+Run the site in the development mode:
+```
+make dev
+```
 
-- Boolean types
-- _AND_, _OR_, _XOR_, _NOT_
-- Cryptographic primitives (*HASH_KEY*, *BLAKE2B*, *SHA256*, *SHA512*, *CHECK_SIGNATURE*, *COMPARE*)
+## Contact us
 
-### 7- Operations on strings and lists
+If you have any questions regarding the tutorials, Michelson kernel, or you spotted a bug — please reach us:
+* Telegram [https://t.me/baking_bad_chat](https://t.me/baking_bad_chat)
+* Slack [https://tezos-dev.slack.com/archives/CV5NX7F2L](https://tezos-dev.slack.com/archives/CV5NX7F2L)
+* Discord [Baking Bad](https://discord.gg/RcPGSdcVSx)
 
-- string type
-- _CONCAT_, _SLICE_, _SIZE_, _COMPARE_
-- list type
-- *CONS*, *NIL*, *IF_CONS*, *SIZE*
 
-### 8- Pairs: constructing/deconstructing, nested pairs, right/left balanced trees & comparable pairs
+## About
 
-- pair type
-- *PAIR*, *CAR*, *CDR*, *COMPARE*, *SET_C[AD]R*, *MAP_C[AD]R*
-- Nested pair macros
+Project is supported by Tezos Foundation.  
 
-### 9- Cast types, compare, pack/unpack bytes
-
-### 10- Operation on maps & sets, big_maps
-
-- map, big map and set types
-- difference between map and big map
-- operations on sets: *EMPTY_SET*, *MEM*, *UPDATE*, *SIZE*
-- operations on maps: *EMPTY_MAP*, *GET*, *UPDATE*, *SIZE*
-- operations on big maps: *EMPTY_BIG_MAP*, *GET*, *MEM*, *UPDATE*
-
-### 11- Iterating collections with ITER, LOOP, MAP & SET macros
-
-- definitions and examples
-
-### 12- Union type, entrypoints, handling parameters, implementing enum
-
-- or (l) (r)
-- use of *or* for entrypoints
-
-### 13- Address & contract types, entrypoint address, SELF, SENDER, SOURCE
-
-### 14- Internal operations: delegation, origination, transaction
-
-### 15- Lambdas, partial application
+Michelson tutorials: [Claude Barde](https://twitter.com/claudebarde)  
+Jupyter kernel & educational platform: [Baking Bad](https://twitter.com/TezosBakingBad)
