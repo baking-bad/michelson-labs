@@ -23,7 +23,7 @@
     <meta itemprop="name" content="Chapter 7">
     <meta itemprop="description" content="This new chapter will be the occasion to work a little more in-depth with two data types that are pretty important on a smart contract: strings and lists.">
     <meta itemprop="image" content="https://michelson.baking-bad.org/og.png">
-    <link rel="preload" href="/assets/css/0.styles.41c7ef0c.css" as="style"><link rel="preload" href="/assets/js/app.619c8c83.js" as="script"><link rel="preload" href="/assets/js/2.430b66b2.js" as="script"><link rel="preload" href="/assets/js/16.3dcbedbb.js" as="script"><link rel="preload" href="/assets/js/4.c279c943.js" as="script"><link rel="preload" href="/assets/js/3.550cb5aa.js" as="script"><link rel="prefetch" href="/assets/js/10.39ae3c42.js"><link rel="prefetch" href="/assets/js/11.c8bcd423.js"><link rel="prefetch" href="/assets/js/12.4daeeb25.js"><link rel="prefetch" href="/assets/js/13.a75e832a.js"><link rel="prefetch" href="/assets/js/14.8778eaa1.js"><link rel="prefetch" href="/assets/js/15.8fc30b52.js"><link rel="prefetch" href="/assets/js/17.f4089664.js"><link rel="prefetch" href="/assets/js/18.8c8e2dab.js"><link rel="prefetch" href="/assets/js/19.2f489976.js"><link rel="prefetch" href="/assets/js/20.52755843.js"><link rel="prefetch" href="/assets/js/21.2bcbd1eb.js"><link rel="prefetch" href="/assets/js/22.77994f1a.js"><link rel="prefetch" href="/assets/js/23.cfbbd282.js"><link rel="prefetch" href="/assets/js/24.e396ce94.js"><link rel="prefetch" href="/assets/js/25.2624171d.js"><link rel="prefetch" href="/assets/js/5.b2436255.js"><link rel="prefetch" href="/assets/js/6.cb0bbb2c.js"><link rel="prefetch" href="/assets/js/7.16d6fa11.js"><link rel="prefetch" href="/assets/js/8.c7c848cc.js"><link rel="prefetch" href="/assets/js/9.d1dbceb8.js">
+    <link rel="preload" href="/assets/css/0.styles.41c7ef0c.css" as="style"><link rel="preload" href="/assets/js/app.18800d3b.js" as="script"><link rel="preload" href="/assets/js/2.430b66b2.js" as="script"><link rel="preload" href="/assets/js/16.5316cf4d.js" as="script"><link rel="preload" href="/assets/js/4.c279c943.js" as="script"><link rel="preload" href="/assets/js/3.550cb5aa.js" as="script"><link rel="prefetch" href="/assets/js/10.39ae3c42.js"><link rel="prefetch" href="/assets/js/11.897dacfb.js"><link rel="prefetch" href="/assets/js/12.083d37d3.js"><link rel="prefetch" href="/assets/js/13.a75e832a.js"><link rel="prefetch" href="/assets/js/14.d7e9078d.js"><link rel="prefetch" href="/assets/js/15.2d0a9cd5.js"><link rel="prefetch" href="/assets/js/17.f4089664.js"><link rel="prefetch" href="/assets/js/18.bc1d5da2.js"><link rel="prefetch" href="/assets/js/19.2f489976.js"><link rel="prefetch" href="/assets/js/20.d6a0692d.js"><link rel="prefetch" href="/assets/js/21.2bcbd1eb.js"><link rel="prefetch" href="/assets/js/22.42b58ecc.js"><link rel="prefetch" href="/assets/js/23.cfbbd282.js"><link rel="prefetch" href="/assets/js/24.3069e4b3.js"><link rel="prefetch" href="/assets/js/25.9bb53cdf.js"><link rel="prefetch" href="/assets/js/5.b2436255.js"><link rel="prefetch" href="/assets/js/6.c09f7c7f.js"><link rel="prefetch" href="/assets/js/7.16d6fa11.js"><link rel="prefetch" href="/assets/js/8.c7c848cc.js"><link rel="prefetch" href="/assets/js/9.d1dbceb8.js">
     <link rel="stylesheet" href="/assets/css/0.styles.41c7ef0c.css">
   </head>
   <body>
@@ -54,14 +54,15 @@ First, you can check the length of the string with the <strong><code>SIZE</code>
 </span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">&quot;tezos&quot;</span><span class="token punctuation"> </span><span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage nat;
-parameter string;
-code { CAR ; SIZE ; NIL operation ; PAIR };
-RUN: use %default; drop all; push ('tezos', 0);
-CAR: pop ('tezos', 0); push tezos;
-SIZE: pop tezos; push 5;
-NIL: push [];
-PAIR: pop [], 5; push ([], 5);</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                 </th><th>type                                    </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">5</pre></td><td><pre style="text-align:left;">nat</pre></td></tr></tbody></table></div> <p>As expected, the length of the string <em>&quot;Tezos&quot;</em> is <code>5</code>. Note that the length is returned as a <code>nat</code> because negative length are not possible.<br>
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage: updated
+parameter: updated
+code: updated
+BEGIN %default / _ =&gt; ('tezos' * 0)
+CAR / ('tezos' * 0) =&gt; 'tezos'
+SIZE / 'tezos' =&gt; 5
+NIL / _ =&gt; []
+PAIR / [] : 5 =&gt; ([] * 5)
+END %default / ([] * 5) =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                    </th><th>value                                 </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">nat</pre></td><td><pre style="text-align:left;">5</pre></td></tr></tbody></table></div> <p>As expected, the length of the string <em>&quot;Tezos&quot;</em> is <code>5</code>. Note that the length is returned as a <code>nat</code> because negative length are not possible.<br>
 Knowing the length of a string can be useful if you want to limit the size of the strings saved into your contract. Let's write an example that will reject string parameters if their length exceeds <code>5</code>:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
@@ -78,19 +79,20 @@ Knowing the length of a string can be useful if you want to limit the size of th
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">&quot;tezos&quot;</span><span class="token punctuation"> </span><span class="token number">&quot;&quot;</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage string;
-parameter string;
-code { CAR ; DUP ; SIZE ; PUSH nat 5 ; { { COMPARE ; LT } ; IF { { UNIT ; FAILWITH } } { NIL operation ; PAIR } } };
-RUN: use %default; drop all; push ('tezos', '');
-CAR: pop ('tezos', ''); push tezos;
-DUP: push tezos;
-SIZE: pop tezos; push 5;
-PUSH: push 5;
-COMPARE: pop 5, 5; push 0;
-LT: pop 0; push False;
-IF: pop False;
-NIL: push [];
-PAIR: pop [], tezos; push ([], 'tezos');</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                       </th><th>type                                       </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">&quot;tezos&quot;</pre></td><td><pre style="text-align:left;">string</pre></td></tr></tbody></table></div> <p>If you add another character to &quot;tezos&quot;, you will see the contract fail 😊</p> <p>One of the most common actions on strings is concatenation. Michelson provides an instruction that allows you to put two separate strings together: <strong><code>CONCAT</code></strong>. This is how it works:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage: updated
+parameter: updated
+code: updated
+BEGIN %default / _ =&gt; ('tezos' * '')
+CAR / ('tezos' * '') =&gt; 'tezos'
+DUP / 'tezos' =&gt; 'tezos' : 'tezos'
+SIZE / 'tezos' =&gt; 5
+PUSH / _ =&gt; 5
+COMPARE / 5 : 5 =&gt; 0
+LT / 0 =&gt; False
+IF / False =&gt; _
+NIL / _ =&gt; []
+PAIR / [] : 'tezos' =&gt; ([] * 'tezos')
+END %default / ([] * 'tezos') =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                       </th><th>value                                     </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">string</pre></td><td><pre style="text-align:left;">tezos</pre></td></tr></tbody></table></div> <p>If you add another character to &quot;tezos&quot;, you will see the contract fail 😊</p> <p>One of the most common actions on strings is concatenation. Michelson provides an instruction that allows you to put two separate strings together: <strong><code>CONCAT</code></strong>. This is how it works:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">CAR</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
@@ -101,15 +103,16 @@ PAIR: pop [], tezos; push ([], 'tezos');</pre></div> <div class="embedded-html">
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">&quot;Tezos&quot;</span><span class="token punctuation"> </span><span class="token number">&quot;&quot;</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage string;
-parameter string;
-code { CAR ; PUSH string &quot;Hello &quot; ; CONCAT ; NIL operation ; PAIR };
-RUN: use %default; drop all; push ('Tezos', '');
-CAR: pop ('Tezos', ''); push Tezos;
-PUSH: push Hello ;
-CONCAT: pop Hello ; pop Tezos; push Hello Tezos;
-NIL: push [];
-PAIR: pop [], Hello Tezos; push ([], 'Hello Tezos');</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                             </th><th>type                                       </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">&quot;Hello Tezos&quot;</pre></td><td><pre style="text-align:left;">string</pre></td></tr></tbody></table></div> <p>This smart contract does a very simple thing: it takes a string as a parameter and put it together with &quot;Hello &quot; before saving it in the storage. When using <strong><code>CONCAT</code></strong>, just make sure you have two strings on top of the stack and that they are in the right order, the element 1 will be the first one in the new string and element 2 will be the second one.</p> <p>If you want to concatenate multiple strings, you just have to add them to the stack and concatenate the <strong><code>CONCAT</code></strong> instructions!</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage: updated
+parameter: updated
+code: updated
+BEGIN %default / _ =&gt; ('Tezos' * '')
+CAR / ('Tezos' * '') =&gt; 'Tezos'
+PUSH / _ =&gt; 'Hello '
+CONCAT / 'Hello ' : 'Tezos' =&gt; 'Hello Tezos'
+NIL / _ =&gt; []
+PAIR / [] : 'Hello Tezos' =&gt; ([] * 'Hello Tezos')
+END %default / ([] * 'Hello Tezos') =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                       </th><th>value                                           </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">string</pre></td><td><pre style="text-align:left;">Hello Tezos</pre></td></tr></tbody></table></div> <p>This smart contract does a very simple thing: it takes a string as a parameter and put it together with &quot;Hello &quot; before saving it in the storage. When using <strong><code>CONCAT</code></strong>, just make sure you have two strings on top of the stack and that they are in the right order, the element 1 will be the first one in the new string and element 2 will be the second one.</p> <p>If you want to concatenate multiple strings, you just have to add them to the stack and concatenate the <strong><code>CONCAT</code></strong> instructions!</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">CAR</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
@@ -122,17 +125,18 @@ PAIR: pop [], Hello Tezos; push ([], 'Hello Tezos');</pre></div> <div class="emb
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">&quot;World&quot;</span><span class="token punctuation"> </span><span class="token number">&quot;&quot;</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage string;
-parameter string;
-code { CAR ; PUSH string &quot;Tezos &quot; ; PUSH string &quot;Hello &quot; ; CONCAT ; CONCAT ; NIL operation ; PAIR };
-RUN: use %default; drop all; push ('World', '');
-CAR: pop ('World', ''); push World;
-PUSH: push Tezos ;
-PUSH: push Hello ;
-CONCAT: pop Hello ; pop Tezos ; push Hello Tezos ;
-CONCAT: pop Hello Tezos ; pop World; push Hello Tezos World;
-NIL: push [];
-PAIR: pop [], Hello Tezos World; push ([], 'Hello Tezos World');</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                                   </th><th>type                                       </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">&quot;Hello Tezos World&quot;</pre></td><td><pre style="text-align:left;">string</pre></td></tr></tbody></table></div> <p>The opposite action is <strong><code>SLICE</code></strong>: instead of putting two strings together, we are cutting one in pieces! This instruction takes three parameters: the starting point for the slice, the character length you want to slice and the string. Let's observe a few examples:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">unit</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage: updated
+parameter: updated
+code: updated
+BEGIN %default / _ =&gt; ('World' * '')
+CAR / ('World' * '') =&gt; 'World'
+PUSH / _ =&gt; 'Tezos '
+PUSH / _ =&gt; 'Hello '
+CONCAT / 'Hello ' : 'Tezos ' =&gt; 'Hello Tezos '
+CONCAT / 'Hello Tezos ' : 'World' =&gt; 'Hello Tezos World'
+NIL / _ =&gt; []
+PAIR / [] : 'Hello Tezos World' =&gt; ([] * 'Hello Tezos World')
+END %default / ([] * 'Hello Tezos World') =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                       </th><th>value                                                 </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">string</pre></td><td><pre style="text-align:left;">Hello Tezos World</pre></td></tr></tbody></table></div> <p>The opposite action is <strong><code>SLICE</code></strong>: instead of putting two strings together, we are cutting one in pieces! This instruction takes three parameters: the starting point for the slice, the character length you want to slice and the string. Let's observe a few examples:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">unit</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">unit</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">BEGIN</span><span class="token punctuation"> </span><span class="token number">Unit</span><span class="token punctuation"> </span><span class="token number">Unit</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token operator">DROP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
@@ -141,32 +145,33 @@ PAIR: pop [], Hello Tezos World; push ([], 'Hello Tezos World');</pre></div> <di
 </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token attr-name">@length</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token number">6</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token comment">## length</span><span class="token punctuation">
 </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token attr-name">@offset</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token number">0</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token comment">## offset</span><span class="token punctuation">
 </span><span class="token keyword">DUMP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage unit;
-parameter unit;
-BEGIN: use %default; drop all; push (Unit, Unit);
-DROP: pop (Unit, Unit);
-PUSH: push BakingBad;
-PUSH: push 6;
-PUSH: push 0;</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                           </th><th>type                                       </th><th>name                                                 </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">0</pre></td><td><pre style="text-align:left;">nat</pre></td><td><pre style="text-align:left;">@offset</pre></td></tr> <tr><td><pre style="text-align:left;">6</pre></td><td><pre style="text-align:left;">nat</pre></td><td><pre style="text-align:left;">@length</pre></td></tr> <tr><td><pre style="text-align:left;">&quot;BakingBad&quot;</pre></td><td><pre style="text-align:left;">string</pre></td><td><pre style="text-align:left;">@string_to_slice</pre></td></tr></tbody></table></div> <p>This is how the stack looks like before the slicing begins...</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token operator">SLICE</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="embedded-html"><table><thead><tr><th>value                                             </th><th>type                                              </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">Some &quot;Baking&quot;</pre></td><td><pre style="text-align:left;">option string</pre></td></tr></tbody></table></div> <p>You probably notice that the result of <strong><code>SLICE</code></strong> is wrapped in an <code>option</code> value. If the offset or the length you set go beyond the bounds of the string, the opcode returns <code>None</code>:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token operator">DROP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage: updated
+parameter: updated
+BEGIN %default / _ =&gt; (Unit * Unit)
+DROP / (Unit * Unit) =&gt; _
+PUSH / _ =&gt; 'BakingBad'
+PUSH / _ =&gt; 6
+PUSH / _ =&gt; 0
+DUMP =&gt; [0, 6, 'BakingBad']</pre></div> <div class="embedded-html"><h4>Stack updates</h4><table><thead><tr><th>index                                 </th><th>type                                       </th><th>value                                         </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">0</pre></td><td><pre style="text-align:left;">nat</pre></td><td><pre style="text-align:left;">0</pre></td></tr> <tr><td><pre style="text-align:left;">1</pre></td><td><pre style="text-align:left;">nat</pre></td><td><pre style="text-align:left;">6</pre></td></tr> <tr><td><pre style="text-align:left;">2</pre></td><td><pre style="text-align:left;">string</pre></td><td><pre style="text-align:left;">BakingBad</pre></td></tr></tbody></table></div> <p>This is how the stack looks like before the slicing begins...</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token operator">SLICE</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>SLICE / 0 : 6 : 'BakingBad' =&gt; 'Baking'?</pre></div> <div class="embedded-html"><h4>Stack updates</h4><table><thead><tr><th>index                                 </th><th>type                                                </th><th>value                                      </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">0</pre></td><td><pre style="text-align:left;">option (string)</pre></td><td><pre style="text-align:left;">Baking</pre></td></tr></tbody></table></div> <p>You probably notice that the result of <strong><code>SLICE</code></strong> is wrapped in an <code>option</code> value. If the offset or the length you set go beyond the bounds of the string, the opcode returns <code>None</code>:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token operator">DROP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token number">&quot;BakingBad&quot;</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token number">6</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token comment">## length</span><span class="token punctuation">
 </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token number">6</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token comment">## offset</span><span class="token punctuation">
 </span><span class="token operator">SLICE</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>DROP: pop ('Baking',);
-PUSH: push BakingBad;
-PUSH: push 6;
-PUSH: push 6;
-SLICE: pop 6, 6, BakingBad; push None;</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                    </th><th>type                                              </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">None</pre></td><td><pre style="text-align:left;">option string</pre></td></tr></tbody></table></div> <p>Obviously, you are not limited to extract slices of strings from the first character, you can start at whichever position you like, keeping in mind the bounds of the string:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token operator">DROP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>DROP / 'Baking'? =&gt; _
+PUSH / _ =&gt; 'BakingBad'
+PUSH / _ =&gt; 6
+PUSH / _ =&gt; 6
+SLICE / 6 : 6 : 'BakingBad' =&gt; None</pre></div> <div class="embedded-html"><h4>Stack updates</h4><table><thead><tr><th>index                                 </th><th>type                                       </th><th>value                                    </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">0</pre></td><td><pre style="text-align:left;">option</pre></td><td><pre style="text-align:left;">None</pre></td></tr></tbody></table></div> <p>Obviously, you are not limited to extract slices of strings from the first character, you can start at whichever position you like, keeping in mind the bounds of the string:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token operator">DROP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token number">&quot;BakingBadIsAwesome&quot;</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token number">7</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token comment">## length</span><span class="token punctuation">
 </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token number">11</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token comment">## offset</span><span class="token punctuation">
 </span><span class="token operator">SLICE</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>DROP: pop None;
-PUSH: push BakingBadIsAwesome;
-PUSH: push 7;
-PUSH: push 11;
-SLICE: pop 11, 7, BakingBadIsAwesome; push ('Awesome',);</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                              </th><th>type                                              </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">Some &quot;Awesome&quot;</pre></td><td><pre style="text-align:left;">option string</pre></td></tr></tbody></table></div> <p>Slicing a string in two pieces is going to ask for a little extra work but it is totally possible. Here is how to do it:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token operator">DROP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>DROP / None =&gt; _
+PUSH / _ =&gt; 'BakingBadIsAwesome'
+PUSH / _ =&gt; 7
+PUSH / _ =&gt; 11
+SLICE / 11 : 7 : 'BakingBadIsAwesome' =&gt; 'Awesome'?</pre></div> <div class="embedded-html"><h4>Stack updates</h4><table><thead><tr><th>index                                 </th><th>type                                                </th><th>value                                       </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">0</pre></td><td><pre style="text-align:left;">option (string)</pre></td><td><pre style="text-align:left;">Awesome</pre></td></tr></tbody></table></div> <p>Slicing a string in two pieces is going to ask for a little extra work but it is totally possible. Here is how to do it:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token operator">DROP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token number">&quot;BakingBadIsAwesome&quot;</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token comment">## Push the string to slice in two</span><span class="token punctuation">
 </span><span class="token operator">DUP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token comment">## Duplicate the string</span><span class="token punctuation">
 </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token number">9</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token comment">## The length of the first piece</span><span class="token punctuation">
@@ -178,17 +183,18 @@ SLICE: pop 11, 7, BakingBadIsAwesome; push ('Awesome',);</pre></div> <div class=
 </span><span class="token operator">SLICE</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token comment">## Extract the second piece of the string</span><span class="token punctuation">
 </span><span class="token operator">SWAP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token comment">## Put the pieces in the right order</span><span class="token punctuation">
 </span><span class="token keyword">DUMP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>DROP: pop ('Awesome',);
-PUSH: push BakingBadIsAwesome;
-DUP: push BakingBadIsAwesome;
-PUSH: push 9;
-PUSH: push 0;
-SLICE: pop 0, 9, BakingBadIsAwesome; push ('BakingBad',);
-SWAP: pop ('BakingBad',), BakingBadIsAwesome; push ('BakingBad',); push BakingBadIsAwesome;
-PUSH: push 9;
-PUSH: push 9;
-SLICE: pop 9, 9, BakingBadIsAwesome; push ('IsAwesome',);
-SWAP: pop ('IsAwesome',), ('BakingBad',); push ('IsAwesome',); push ('BakingBad',);</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                                </th><th>type                                              </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">Some &quot;BakingBad&quot;</pre></td><td><pre style="text-align:left;">option string</pre></td></tr> <tr><td><pre style="text-align:left;">Some &quot;IsAwesome&quot;</pre></td><td><pre style="text-align:left;">option string</pre></td></tr></tbody></table></div> <p>The last instruction in our tool box for strings in Michelson is <strong><code>COMPARE</code></strong>. As it does it for other types, the instruction compares two strings. You can then use it with the usual macros to check if two strings are the same or are different:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">DROP_ALL</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>DROP / 'Awesome'? =&gt; _
+PUSH / _ =&gt; 'BakingBadIsAwesome'
+DUP / 'BakingBadIsAwesome' =&gt; 'BakingBadIsAwesome' : 'BakingBadIsAwesome'
+PUSH / _ =&gt; 9
+PUSH / _ =&gt; 0
+SLICE / 0 : 9 : 'BakingBadIsAwesome' =&gt; 'BakingBad'?
+SWAP / 'BakingBad'? : 'BakingBadIsAwesome' =&gt; 'BakingBadIsAwesome' : 'BakingBad'?
+PUSH / _ =&gt; 9
+PUSH / _ =&gt; 9
+SLICE / 9 : 9 : 'BakingBadIsAwesome' =&gt; 'IsAwesome'?
+SWAP / 'IsAwesome'? : 'BakingBad'? =&gt; 'BakingBad'? : 'IsAwesome'?
+DUMP =&gt; ['BakingBad'?, 'IsAwesome'?]</pre></div> <div class="embedded-html"><h4>Stack updates</h4><table><thead><tr><th>index                                 </th><th>type                                                </th><th>value                                         </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">0</pre></td><td><pre style="text-align:left;">option (string)</pre></td><td><pre style="text-align:left;">BakingBad</pre></td></tr> <tr><td><pre style="text-align:left;">1</pre></td><td><pre style="text-align:left;">option (string)</pre></td><td><pre style="text-align:left;">IsAwesome</pre></td></tr></tbody></table></div> <p>The last instruction in our tool box for strings in Michelson is <strong><code>COMPARE</code></strong>. As it does it for other types, the instruction compares two strings. You can then use it with the usual macros to check if two strings are the same or are different:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">DROP_ALL</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token number">&quot;tezos&quot;</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token number">&quot;tezos&quot;</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token variable">CMPEQ</span><span class="token punctuation"> </span><span class="token attr-name">@first_example</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
@@ -196,15 +202,15 @@ SWAP: pop ('IsAwesome',), ('BakingBad',); push ('IsAwesome',); push ('BakingBad'
 </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token number">&quot;BakingBad&quot;</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token variable">CMPEQ</span><span class="token punctuation"> </span><span class="token attr-name">@second_example</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">DUMP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>DROP_ALL: drop all;
-PUSH: push tezos;
-PUSH: push tezos;
-COMPARE: pop tezos, tezos; push 0;
-EQ: pop 0; push True;
-PUSH: push bakingbad;
-PUSH: push BakingBad;
-COMPARE: pop BakingBad, bakingbad; push -1;
-EQ: pop -1; push False;</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                     </th><th>type                                     </th><th>name                                                </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">False</pre></td><td><pre style="text-align:left;">bool</pre></td><td><pre style="text-align:left;">@second_example</pre></td></tr> <tr><td><pre style="text-align:left;">True</pre></td><td><pre style="text-align:left;">bool</pre></td><td><pre style="text-align:left;">@first_example</pre></td></tr></tbody></table></div> <p>As you can see, <strong><code>COMPARE</code></strong> is case-sensitive, so it is very important to verify this won't produce false negative results.</p> <h2 id="working-with-lists"><a href="#working-with-lists" class="header-anchor">#</a> Working with lists</h2> <p>After manipulating strings, you may want to save them in the storage of the smart contract. Michelson offers different solutions for that, for example sets and maps, but you may prefer a <em>list</em>. A list is a special structure that contains different values of the same type. One of its characteristics is that a list is <em>immutable</em>, meaning that when you want to add an element to a list, you actually create a new list made of the new element in the first position (which we call the <em>head</em>) and the elements of the previous list starting at the second position (the previous list is called the <em>tail</em>). Lists are also ordered, which means that their elements are in a specific order.</p> <p>You probably remember how to create an empty list from the contracts we already wrote so far, with <code>NIL &quot;type&quot;</code>. The <strong><code>NIL</code></strong> instruction creates a new empty list that will accept elements of the type you specified. For example, <strong><code>NIL operation</code></strong> is a list that accepts elements of type <code>operation</code>. Once you created an empty list, you can easily add an element with the <strong><code>CONS</code></strong> instruction. First, you push the element onto the stack, next to the list before using <strong><code>CONS</code></strong>:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">list</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>PUSH / _ =&gt; 'tezos'
+PUSH / _ =&gt; 'tezos'
+COMPARE / 'tezos' : 'tezos' =&gt; 0
+EQ / 0 =&gt; True
+PUSH / _ =&gt; 'bakingbad'
+PUSH / _ =&gt; 'BakingBad'
+COMPARE / 'BakingBad' : 'bakingbad' =&gt; -1
+EQ / -1 =&gt; False
+DUMP =&gt; [False, True]</pre></div> <div class="embedded-html"><h4>Stack updates</h4><table><thead><tr><th>index                                 </th><th>type                                     </th><th>value                                     </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">0</pre></td><td><pre style="text-align:left;">bool</pre></td><td><pre style="text-align:left;">False</pre></td></tr> <tr><td><pre style="text-align:left;">1</pre></td><td><pre style="text-align:left;">bool</pre></td><td><pre style="text-align:left;">True</pre></td></tr></tbody></table></div> <p>As you can see, <strong><code>COMPARE</code></strong> is case-sensitive, so it is very important to verify this won't produce false negative results.</p> <h2 id="working-with-lists"><a href="#working-with-lists" class="header-anchor">#</a> Working with lists</h2> <p>After manipulating strings, you may want to save them in the storage of the smart contract. Michelson offers different solutions for that, for example sets and maps, but you may prefer a <em>list</em>. A list is a special structure that contains different values of the same type. One of its characteristics is that a list is <em>immutable</em>, meaning that when you want to add an element to a list, you actually create a new list made of the new element in the first position (which we call the <em>head</em>) and the elements of the previous list starting at the second position (the previous list is called the <em>tail</em>). Lists are also ordered, which means that their elements are in a specific order.</p> <p>You probably remember how to create an empty list from the contracts we already wrote so far, with <code>NIL &quot;type&quot;</code>. The <strong><code>NIL</code></strong> instruction creates a new empty list that will accept elements of the type you specified. For example, <strong><code>NIL operation</code></strong> is a list that accepts elements of type <code>operation</code>. Once you created an empty list, you can easily add an element with the <strong><code>CONS</code></strong> instruction. First, you push the element onto the stack, next to the list before using <strong><code>CONS</code></strong>:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">list</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">CAR</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
@@ -216,31 +222,35 @@ EQ: pop -1; push False;</pre></div> <div class="embedded-html"><table><thead><tr
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">&quot;tezos&quot;</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage (list string);
-parameter string;
-code { CAR ; NIL string ; SWAP ; CONS ; NIL operation ; PAIR };
-RUN: use %default; drop all; push ('tezos', []);
-CAR: pop ('tezos', []); push tezos;
-NIL: push [];
-SWAP: pop [], tezos; push []; push tezos;
-CONS: pop tezos, []; push ['tezos'];
-NIL: push [];
-PAIR: pop [], ['tezos']; push ([], ['tezos']);</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                           </th><th>type                                            </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">{ &quot;tezos&quot; }</pre></td><td><pre style="text-align:left;">list string</pre></td></tr></tbody></table></div> <p>If you wish, you can also push an existing list onto the stack like so:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">list</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage: updated
+parameter: updated
+code: updated
+BEGIN %default / _ =&gt; ('tezos' * [])
+CAR / ('tezos' * []) =&gt; 'tezos'
+NIL / _ =&gt; []
+SWAP / [] : 'tezos' =&gt; 'tezos' : []
+CONS / 'tezos' : [] =&gt; ['tezos']
+NIL / _ =&gt; []
+PAIR / [] : ['tezos'] =&gt; ([] * ['tezos'])
+END %default / ([] * ['tezos']) =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                              </th><th>value                                         </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">list (string)</pre></td><td><pre style="text-align:left;">['tezos']</pre></td></tr></tbody></table></div> <p>If you wish, you can also push an existing list onto the stack like so:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">list</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
+</span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">DROP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">list</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token number">&quot;baking&quot;</span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token number">&quot;bad&quot;</span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">NIL</span><span class="token punctuation"> </span><span class="token class-name">operation</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">PAIR</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">&quot;tezos&quot;</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage (list string);
-parameter string;
-code { PUSH (list string) { &quot;baking&quot; ; &quot;bad&quot; } ; NIL operation ; PAIR };
-RUN: use %default; drop all; push ('tezos', []);
-PUSH: push ['baking', 'bad'];
-NIL: push [];
-PAIR: pop [], ['baking', 'bad']; push ([], ['baking', 'bad']);</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                                    </th><th>type                                            </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">{ &quot;baking&quot; ; &quot;bad&quot; }</pre></td><td><pre style="text-align:left;">list string</pre></td></tr></tbody></table></div> <p>After the list has been added to the stack, you can add new elements at the beginning (<em>the head</em>):</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">list</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage: updated
+parameter: updated
+code: updated
+BEGIN %default / _ =&gt; ('tezos' * [])
+DROP / ('tezos' * []) =&gt; _
+PUSH / _ =&gt; ['baking', 'bad']
+NIL / _ =&gt; []
+PAIR / [] : ['baking', 'bad'] =&gt; ([] * ['baking', 'bad'])
+END %default / ([] * ['baking', 'bad']) =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                              </th><th>value                                                 </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">list (string)</pre></td><td><pre style="text-align:left;">['baking', 'bad']</pre></td></tr></tbody></table></div> <p>After the list has been added to the stack, you can add new elements at the beginning (<em>the head</em>):</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">list</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">CAR</span><span class="token punctuation">;</span><span class="token punctuation">
@@ -252,16 +262,17 @@ PAIR: pop [], ['baking', 'bad']; push ([], ['baking', 'bad']);</pre></div> <div 
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">&quot;tezos&quot;</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage (list string);
-parameter string;
-code { CAR ; PUSH (list string) { &quot;baking&quot; ; &quot;bad&quot; } ; SWAP ; CONS ; NIL operation ; PAIR };
-RUN: use %default; drop all; push ('tezos', []);
-CAR: pop ('tezos', []); push tezos;
-PUSH: push ['baking', 'bad'];
-SWAP: pop ['baking', 'bad'], tezos; push ['baking', 'bad']; push tezos;
-CONS: pop tezos, ['baking', 'bad']; push ['tezos', 'baking', 'bad'];
-NIL: push [];
-PAIR: pop [], ['tezos', 'baking', 'bad']; push ([], ['tezos', 'baking', 'bad']);</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                                              </th><th>type                                            </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">{ &quot;tezos&quot; ; &quot;baking&quot; ; &quot;bad&quot; }</pre></td><td><pre style="text-align:left;">list string</pre></td></tr></tbody></table></div> <p>Sometimes, you may want to check a list and implement different behaviors if the list is empty or not. In this case, you can use <strong><code>IF_CONS</code></strong> which verifies if there is a head to the provided list. Like the other <strong><code>IF</code></strong> instructions, you need to create two branches, the first one will be executed if <strong><code>IF_CONS</code></strong> is <code>True</code> and the second one will be executed if it is <code>False</code>:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">list</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage: updated
+parameter: updated
+code: updated
+BEGIN %default / _ =&gt; ('tezos' * [])
+CAR / ('tezos' * []) =&gt; 'tezos'
+PUSH / _ =&gt; ['baking', 'bad']
+SWAP / ['baking', 'bad'] : 'tezos' =&gt; 'tezos' : ['baking', 'bad']
+CONS / 'tezos' : ['baking', 'bad'] =&gt; ['tezos', 'baking', 'bad']
+NIL / _ =&gt; []
+PAIR / [] : ['tezos', 'baking', 'bad'] =&gt; ([] * ['tezos', 'baking', 'bad'])
+END %default / ([] * ['tezos', 'baking', 'bad']) =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                              </th><th>value                                                          </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">list (string)</pre></td><td><pre style="text-align:left;">['tezos', 'baking', 'bad']</pre></td></tr></tbody></table></div> <p>Sometimes, you may want to check a list and implement different behaviors if the list is empty or not. In this case, you can use <strong><code>IF_CONS</code></strong> which verifies if there is a head to the provided list. Like the other <strong><code>IF</code></strong> instructions, you need to create two branches, the first one will be executed if <strong><code>IF_CONS</code></strong> is <code>True</code> and the second one will be executed if it is <code>False</code>:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">list</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">DUP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
@@ -277,20 +288,21 @@ PAIR: pop [], ['tezos', 'baking', 'bad']; push ([], ['tezos', 'baking', 'bad']);
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">&quot;tezos&quot;</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token comment">## RUN %default &quot;tezos&quot; { &quot;test&quot; } ;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage (list string);
-parameter string;
-code { DUP ; CAR ; SWAP ; CDR ; IF_CONS { { UNIT ; FAILWITH } } { NIL string ; SWAP ; CONS } ; NIL operation ; PAIR };
-RUN: use %default; drop all; push ('tezos', []);
-DUP: push ('tezos', []);
-CAR: pop ('tezos', []); push tezos;
-SWAP: pop tezos, ('tezos', []); push tezos; push ('tezos', []);
-CDR: pop ('tezos', []); push [];
-IF_CONS: pop [];
-NIL: push [];
-SWAP: pop [], tezos; push []; push tezos;
-CONS: pop tezos, []; push ['tezos'];
-NIL: push [];
-PAIR: pop [], ['tezos']; push ([], ['tezos']);</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                           </th><th>type                                            </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">{ &quot;tezos&quot; }</pre></td><td><pre style="text-align:left;">list string</pre></td></tr></tbody></table></div> <p>Be careful as <strong><code>IF_CONS</code></strong> is going to remove the list you are checking. You should duplicate it with <strong><code>DUP</code></strong> first or if you are checking for an empty string like in this example, you can just push another empty string.<br>
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage: updated
+parameter: updated
+code: updated
+BEGIN %default / _ =&gt; ('tezos' * [])
+DUP / ('tezos' * []) =&gt; ('tezos' * []) : ('tezos' * [])
+CAR / ('tezos' * []) =&gt; 'tezos'
+SWAP / 'tezos' : ('tezos' * []) =&gt; ('tezos' * []) : 'tezos'
+CDR / ('tezos' * []) =&gt; []
+IF_CONS / [] =&gt; _
+NIL / _ =&gt; []
+SWAP / [] : 'tezos' =&gt; 'tezos' : []
+CONS / 'tezos' : [] =&gt; ['tezos']
+NIL / _ =&gt; []
+PAIR / [] : ['tezos'] =&gt; ([] * ['tezos'])
+END %default / ([] * ['tezos']) =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                              </th><th>value                                         </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">list (string)</pre></td><td><pre style="text-align:left;">['tezos']</pre></td></tr></tbody></table></div> <p>Be careful as <strong><code>IF_CONS</code></strong> is going to remove the list you are checking. You should duplicate it with <strong><code>DUP</code></strong> first or if you are checking for an empty string like in this example, you can just push another empty string.<br>
 If you comment the first <code>RUN</code> and comment out the second, you will see the expected behavior of the contract as it fails when the list in the storage is not empty.</p> <p>Another useful instruction to check lists is <strong><code>SIZE</code></strong> which returns the number of elements in a list as a <code>nat</code> (as usual, the number of elements cannot be negative):</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">list</span><span class="token punctuation"> </span><span class="token class-name">int</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
@@ -301,67 +313,72 @@ If you comment the first <code>RUN</code> and comment out the second, you will s
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation"> </span><span class="token number">7</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token number">4</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token number">6</span><span class="token punctuation"> </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token number">0</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage nat;
-parameter (list int);
-code { CAR ; SIZE ; NIL operation ; PAIR };
-RUN: use %default; drop all; push ([7, 4, 6], 0);
-CAR: pop ([7, 4, 6], 0); push [7, 4, 6];
-SIZE: pop [7, 4, 6]; push 3;
-NIL: push [];
-PAIR: pop [], 3; push ([], 3);</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                 </th><th>type                                    </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">3</pre></td><td><pre style="text-align:left;">nat</pre></td></tr></tbody></table></div> <p>This is a very simple contract that saves in its storage the length of a list. Try to add or remove elements in the list to see it work 😊</p> <p>One of the powers of list is that they are <em>iterable</em>, it means that you can go through the elements one by one, either to check them or modify them. Michelson offers two instructions to loop through lists: <strong><code>ITER</code></strong> and <strong><code>MAP</code></strong>. Although they work in a very similar way, they yield very different results. Let's start with <strong><code>ITER</code></strong>. One of the best ways to understand what it does is to see it in action:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">int</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage: updated
+parameter: updated
+code: updated
+BEGIN %default / _ =&gt; ([7, 4, 6] * 0)
+CAR / ([7, 4, 6] * 0) =&gt; [7, 4, 6]
+SIZE / [7, 4, 6] =&gt; 3
+NIL / _ =&gt; []
+PAIR / [] : 3 =&gt; ([] * 3)
+END %default / ([] * 3) =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                    </th><th>value                                 </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">nat</pre></td><td><pre style="text-align:left;">3</pre></td></tr></tbody></table></div> <p>This is a very simple contract that saves in its storage the length of a list. Try to add or remove elements in the list to see it work 😊</p> <p>One of the powers of list is that they are <em>iterable</em>, it means that you can go through the elements one by one, either to check them or modify them. Michelson offers two instructions to loop through lists: <strong><code>ITER</code></strong> and <strong><code>MAP</code></strong>. Although they work in a very similar way, they yield very different results. Let's start with <strong><code>ITER</code></strong>. One of the best ways to understand what it does is to see it in action:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">int</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">list</span><span class="token punctuation"> </span><span class="token class-name">int</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">BEGIN</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation"> </span><span class="token number">7</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token number">9</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token number">3</span><span class="token punctuation"> </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token operator">CAR</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token keyword">DUMP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage int;
-parameter (list int);
-BEGIN: use %default; drop all; push ([7, 9, 3], 0);
-CAR: pop ([7, 9, 3], 0); push [7, 9, 3];</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                             </th><th>type                                         </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">{ 7 ; 9 ; 3 }</pre></td><td><pre style="text-align:left;">list int</pre></td></tr></tbody></table></div> <p>This part is simple, we create a new contract and use a list of <code>int</code> as a parameter before extracting the list and putting it on top of the stack. Now comes <strong><code>ITER</code></strong>:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token operator">ITER</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage: updated
+parameter: updated
+BEGIN %default / _ =&gt; ([7, 9, 3] * 0)
+CAR / ([7, 9, 3] * 0) =&gt; [7, 9, 3]
+DUMP =&gt; [[7, 9, 3]]</pre></div> <div class="embedded-html"><h4>Stack updates</h4><table><thead><tr><th>index                                 </th><th>type                                           </th><th>value                                         </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">0</pre></td><td><pre style="text-align:left;">list (int)</pre></td><td><pre style="text-align:left;">[7, 9, 3]</pre></td></tr></tbody></table></div> <p>This part is simple, we create a new contract and use a list of <code>int</code> as a parameter before extracting the list and putting it on top of the stack. Now comes <strong><code>ITER</code></strong>:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token operator">ITER</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">DUMP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="embedded-html"><table><thead><tr><th>value                                 </th><th>type                                    </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">3</pre></td><td><pre style="text-align:left;">int</pre></td></tr> <tr><td><pre style="text-align:left;">9</pre></td><td><pre style="text-align:left;">int</pre></td></tr> <tr><td><pre style="text-align:left;">7</pre></td><td><pre style="text-align:left;">int</pre></td></tr></tbody></table></div> <p>In its simplest form, <strong><code>ITER</code></strong> only takes a <em>body expression</em> (the two curly braces) and runs every element of the list against the code inside the curly braces. The first element is pushed onto the stack and the instructions inside the curly braces are run as usual. When there are no more instructions to run, <strong><code>ITER</code></strong> pushes the second element of the list onto the stack, runs the instructions, and so on until the end of the list.</p> <p>To demonstrate it, we could take each element of the list and add <code>2</code> to it:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">DROP_ALL</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>ITER / [7, 9, 3] =&gt; 7
+ITER / _ =&gt; 9
+ITER / _ =&gt; 3
+DUMP =&gt; [3, 9, 7]</pre></div> <div class="embedded-html"><h4>Stack updates</h4><table><thead><tr><th>index                                 </th><th>type                                    </th><th>value                                 </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">0</pre></td><td><pre style="text-align:left;">int</pre></td><td><pre style="text-align:left;">3</pre></td></tr> <tr><td><pre style="text-align:left;">1</pre></td><td><pre style="text-align:left;">int</pre></td><td><pre style="text-align:left;">9</pre></td></tr> <tr><td><pre style="text-align:left;">2</pre></td><td><pre style="text-align:left;">int</pre></td><td><pre style="text-align:left;">7</pre></td></tr></tbody></table></div> <p>In its simplest form, <strong><code>ITER</code></strong> only takes a <em>body expression</em> (the two curly braces) and runs every element of the list against the code inside the curly braces. The first element is pushed onto the stack and the instructions inside the curly braces are run as usual. When there are no more instructions to run, <strong><code>ITER</code></strong> pushes the second element of the list onto the stack, runs the instructions, and so on until the end of the list.</p> <p>To demonstrate it, we could take each element of the list and add <code>2</code> to it:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">DROP_ALL</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">list</span><span class="token punctuation"> </span><span class="token class-name">int</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation"> </span><span class="token number">7</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token number">9</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token number">3</span><span class="token punctuation"> </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token operator">ITER</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation"> </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token class-name">int</span><span class="token punctuation"> </span><span class="token number">2</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token operator">ADD</span><span class="token punctuation"> </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">DUMP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>DROP_ALL: drop all;
-PUSH: push [7, 9, 3];
-ITER: pop [7, 9, 3]; push 7;
-  PUSH: push 2;
-  ADD: pop 2, 7; push 9;
-  push 9;
-  PUSH: push 2;
-  ADD: pop 2, 9; push 11;
-  push 3;
-  PUSH: push 2;
-  ADD: pop 2, 3; push 5;</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                  </th><th>type                                    </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">5</pre></td><td><pre style="text-align:left;">int</pre></td></tr> <tr><td><pre style="text-align:left;">11</pre></td><td><pre style="text-align:left;">int</pre></td></tr> <tr><td><pre style="text-align:left;">9</pre></td><td><pre style="text-align:left;">int</pre></td></tr></tbody></table></div> <p>First observation from this code snippet, <strong><code>ITER</code></strong> removes the list from the stack. Make sure to duplicate it if you need it later.<br>
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>PUSH / _ =&gt; [7, 9, 3]
+ITER / [7, 9, 3] =&gt; 7
+PUSH / _ =&gt; 2
+ADD / 2 : 7 =&gt; 9
+ITER / _ =&gt; 9
+PUSH / _ =&gt; 2
+ADD / 2 : 9 =&gt; 11
+ITER / _ =&gt; 3
+PUSH / _ =&gt; 2
+ADD / 2 : 3 =&gt; 5
+DUMP =&gt; [5, 11, 9]</pre></div> <div class="embedded-html"><h4>Stack updates</h4><table><thead><tr><th>index                                 </th><th>type                                    </th><th>value                                  </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">0</pre></td><td><pre style="text-align:left;">int</pre></td><td><pre style="text-align:left;">5</pre></td></tr> <tr><td><pre style="text-align:left;">1</pre></td><td><pre style="text-align:left;">int</pre></td><td><pre style="text-align:left;">11</pre></td></tr> <tr><td><pre style="text-align:left;">2</pre></td><td><pre style="text-align:left;">int</pre></td><td><pre style="text-align:left;">9</pre></td></tr></tbody></table></div> <p>First observation from this code snippet, <strong><code>ITER</code></strong> removes the list from the stack. Make sure to duplicate it if you need it later.<br>
 Next, the elements present in the stack are indeed the values from the list + <code>2</code> for each value. Remember that the first value in the list will be the last one in the resulting stack. Here is another example:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">DROP_ALL</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">list</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation"> </span><span class="token number">&quot;John&quot;</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token number">&quot;Amir&quot;</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token number">&quot;Stella&quot;</span><span class="token punctuation"> </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token operator">ITER</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation"> </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token class-name">string</span><span class="token punctuation"> </span><span class="token number">&quot;Hello &quot;</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token operator">CONCAT</span><span class="token punctuation"> </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">DUMP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>DROP_ALL: drop all;
-PUSH: push ['John', 'Amir', 'Stella'];
-ITER: pop ['John', 'Amir', 'Stella']; push John;
-  PUSH: push Hello ;
-  CONCAT: pop Hello ; pop John; push Hello John;
-  push Amir;
-  PUSH: push Hello ;
-  CONCAT: pop Hello ; pop Amir; push Hello Amir;
-  push Stella;
-  PUSH: push Hello ;
-  CONCAT: pop Hello ; pop Stella; push Hello Stella;</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                              </th><th>type                                       </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">&quot;Hello Stella&quot;</pre></td><td><pre style="text-align:left;">string</pre></td></tr> <tr><td><pre style="text-align:left;">&quot;Hello Amir&quot;</pre></td><td><pre style="text-align:left;">string</pre></td></tr> <tr><td><pre style="text-align:left;">&quot;Hello John&quot;</pre></td><td><pre style="text-align:left;">string</pre></td></tr></tbody></table></div> <p>This is how you can greet all the people in a list! <strong><code>ITER</code></strong> goes through the list, takes the elements one by one and adds &quot;Hello &quot; in front of each name. You can add the level of complexity you want in the body expression (we'll keep that for the exercices!)</p> <p>The second iterative instruction is <strong><code>MAP</code></strong>. It works in a very similar fashion: you write a body expression next to the instruction with the instructions you want to apply to the elements of the list. However, this time, <strong><code>MAP</code></strong> is going to return a new list!</p> <p>To observe clearly the difference between these two instruction, let's get our first example and replace <strong><code>ITER</code></strong> with <strong><code>MAP</code></strong>:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">DROP_ALL</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>PUSH / _ =&gt; ['John', 'Amir', 'Stella']
+ITER / ['John', 'Amir', 'Stella'] =&gt; 'John'
+PUSH / _ =&gt; 'Hello '
+CONCAT / 'Hello ' : 'John' =&gt; 'Hello John'
+ITER / _ =&gt; 'Amir'
+PUSH / _ =&gt; 'Hello '
+CONCAT / 'Hello ' : 'Amir' =&gt; 'Hello Amir'
+ITER / _ =&gt; 'Stella'
+PUSH / _ =&gt; 'Hello '
+CONCAT / 'Hello ' : 'Stella' =&gt; 'Hello Stella'
+DUMP =&gt; ['Hello Stella', 'Hello Amir', 'Hello John']</pre></div> <div class="embedded-html"><h4>Stack updates</h4><table><thead><tr><th>index                                 </th><th>type                                       </th><th>value                                            </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">0</pre></td><td><pre style="text-align:left;">string</pre></td><td><pre style="text-align:left;">Hello Stella</pre></td></tr> <tr><td><pre style="text-align:left;">1</pre></td><td><pre style="text-align:left;">string</pre></td><td><pre style="text-align:left;">Hello Amir</pre></td></tr> <tr><td><pre style="text-align:left;">2</pre></td><td><pre style="text-align:left;">string</pre></td><td><pre style="text-align:left;">Hello John</pre></td></tr></tbody></table></div> <p>This is how you can greet all the people in a list! <strong><code>ITER</code></strong> goes through the list, takes the elements one by one and adds &quot;Hello &quot; in front of each name. You can add the level of complexity you want in the body expression (we'll keep that for the exercices!)</p> <p>The second iterative instruction is <strong><code>MAP</code></strong>. It works in a very similar fashion: you write a body expression next to the instruction with the instructions you want to apply to the elements of the list. However, this time, <strong><code>MAP</code></strong> is going to return a new list!</p> <p>To observe clearly the difference between these two instruction, let's get our first example and replace <strong><code>ITER</code></strong> with <strong><code>MAP</code></strong>:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">DROP_ALL</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">list</span><span class="token punctuation"> </span><span class="token class-name">int</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation"> </span><span class="token number">7</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token number">9</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token number">3</span><span class="token punctuation"> </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token operator">MAP</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation"> </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token class-name">int</span><span class="token punctuation"> </span><span class="token number">2</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token operator">ADD</span><span class="token punctuation"> </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">DUMP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>DROP_ALL: drop all;
-PUSH: push [7, 9, 3];
-MAP: pop [7, 9, 3]; push 7;
-  PUSH: push 2;
-  ADD: pop 2, 7; push 9;
-  pop 9; push 9;
-  PUSH: push 2;
-  ADD: pop 2, 9; push 11;
-  pop 11; push 3;
-  PUSH: push 2;
-  ADD: pop 2, 3; push 5;
-  pop 5; push [9, 11, 5];</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                              </th><th>type                                         </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">{ 9 ; 11 ; 5 }</pre></td><td><pre style="text-align:left;">list int</pre></td></tr></tbody></table></div> <p>As you can see, instead of having all the updated elements of the list one on top of the other in the stack, we have a single list where all the elements are in the same order as the previous one and are the result of the previous element value + <code>2</code>.</p> <p>As you can imagine, this is a powerful feature, it allows you to update a list of values in the same exact way. We can go even further with the pattern and apply a conditional to it. For example, you can ask the contract to increase the value in the list only if it is above a certain value:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">DROP_ALL</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>PUSH / _ =&gt; [7, 9, 3]
+MAP / [7, 9, 3] =&gt; 7
+PUSH / _ =&gt; 2
+ADD / 2 : 7 =&gt; 9
+MAP / 9 =&gt; 9
+PUSH / _ =&gt; 2
+ADD / 2 : 9 =&gt; 11
+MAP / 11 =&gt; 3
+PUSH / _ =&gt; 2
+ADD / 2 : 3 =&gt; 5
+MAP / 5 =&gt; [9, 11, 5]
+DUMP =&gt; [[9, 11, 5]]</pre></div> <div class="embedded-html"><h4>Stack updates</h4><table><thead><tr><th>index                                 </th><th>type                                           </th><th>value                                          </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">0</pre></td><td><pre style="text-align:left;">list (int)</pre></td><td><pre style="text-align:left;">[9, 11, 5]</pre></td></tr></tbody></table></div> <p>As you can see, instead of having all the updated elements of the list one on top of the other in the stack, we have a single list where all the elements are in the same order as the previous one and are the result of the previous element value + <code>2</code>.</p> <p>As you can imagine, this is a powerful feature, it allows you to update a list of values in the same exact way. We can go even further with the pattern and apply a conditional to it. For example, you can ask the contract to increase the value in the list only if it is above a certain value:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">DROP_ALL</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token operator">PUSH</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">list</span><span class="token punctuation"> </span><span class="token class-name">int</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation"> </span><span class="token number">7</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token number">9</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token number">3</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token number">4</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation"> </span><span class="token number">2</span><span class="token punctuation"> </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token operator">MAP</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">DUP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
@@ -372,48 +389,48 @@ MAP: pop [7, 9, 3]; push 7;
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">DUMP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>DROP_ALL: drop all;
-PUSH: push [7, 9, 3, 4, 2];
-MAP: pop [7, 9, 3, 4, 2]; push 7;
-  DUP: push 7;
-  PUSH: push 4;
-  SWAP: pop 4, 7; push 4; push 7;
-  COMPARE: pop 7, 4; push 1;
-  GT: pop 1; push True;
-  IF: pop True;
-    PUSH: push 2;
-    ADD: pop 2, 7; push 9;
-  pop 9; push 9;
-  DUP: push 9;
-  PUSH: push 4;
-  SWAP: pop 4, 9; push 4; push 9;
-  COMPARE: pop 9, 4; push 1;
-  GT: pop 1; push True;
-  IF: pop True;
-    PUSH: push 2;
-    ADD: pop 2, 9; push 11;
-  pop 11; push 3;
-  DUP: push 3;
-  PUSH: push 4;
-  SWAP: pop 4, 3; push 4; push 3;
-  COMPARE: pop 3, 4; push -1;
-  GT: pop -1; push False;
-  IF: pop False;
-  pop 3; push 4;
-  DUP: push 4;
-  PUSH: push 4;
-  SWAP: pop 4, 4; push 4; push 4;
-  COMPARE: pop 4, 4; push 0;
-  GT: pop 0; push False;
-  IF: pop False;
-  pop 4; push 2;
-  DUP: push 2;
-  PUSH: push 4;
-  SWAP: pop 4, 2; push 4; push 2;
-  COMPARE: pop 2, 4; push -1;
-  GT: pop -1; push False;
-  IF: pop False;
-  pop 2; push [9, 11, 3, 4, 2];</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                                      </th><th>type                                         </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">{ 9 ; 11 ; 3 ; 4 ; 2 }</pre></td><td><pre style="text-align:left;">list int</pre></td></tr></tbody></table></div> <p>Don't let the long list of operations scare you, what happens under the hood is actually quite simple!<br>
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>PUSH / _ =&gt; [7, 9, 3, 4, 2]
+MAP / [7, 9, 3, 4, 2] =&gt; 7
+DUP / 7 =&gt; 7 : 7
+PUSH / _ =&gt; 4
+SWAP / 4 : 7 =&gt; 7 : 4
+COMPARE / 7 : 4 =&gt; 1
+GT / 1 =&gt; True
+IF / True =&gt; _
+PUSH / _ =&gt; 2
+ADD / 2 : 7 =&gt; 9
+MAP / 9 =&gt; 9
+DUP / 9 =&gt; 9 : 9
+PUSH / _ =&gt; 4
+SWAP / 4 : 9 =&gt; 9 : 4
+COMPARE / 9 : 4 =&gt; 1
+GT / 1 =&gt; True
+IF / True =&gt; _
+PUSH / _ =&gt; 2
+ADD / 2 : 9 =&gt; 11
+MAP / 11 =&gt; 3
+DUP / 3 =&gt; 3 : 3
+PUSH / _ =&gt; 4
+SWAP / 4 : 3 =&gt; 3 : 4
+COMPARE / 3 : 4 =&gt; -1
+GT / -1 =&gt; False
+IF / False =&gt; _
+MAP / 3 =&gt; 4
+DUP / 4 =&gt; 4 : 4
+PUSH / _ =&gt; 4
+SWAP / 4 : 4 =&gt; 4 : 4
+COMPARE / 4 : 4 =&gt; 0
+GT / 0 =&gt; False
+IF / False =&gt; _
+MAP / 4 =&gt; 2
+DUP / 2 =&gt; 2 : 2
+PUSH / _ =&gt; 4
+SWAP / 4 : 2 =&gt; 2 : 4
+COMPARE / 2 : 4 =&gt; -1
+GT / -1 =&gt; False
+IF / False =&gt; _
+MAP / 2 =&gt; [9, 11, 3, 4, 2]
+DUMP =&gt; [[9, 11, 3, 4, 2]]</pre></div> <div class="embedded-html"><h4>Stack updates</h4><table><thead><tr><th>index                                 </th><th>type                                           </th><th>value                                                </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">0</pre></td><td><pre style="text-align:left;">list (int)</pre></td><td><pre style="text-align:left;">[9, 11, 3, 4, 2]</pre></td></tr></tbody></table></div> <p>Don't let the long list of operations scare you, what happens under the hood is actually quite simple!<br>
 First, we add a new list of <code>int</code> on top of the stack. Then, we loop through it using the <strong><code>MAP</code></strong> instruction. At the beginning of each iteration, the <strong><code>MAP</code></strong> instruction pushes the current value on the stack. We duplicate it (because we will need this value later if the comparison yields <code>True</code>), we push <code>4</code> onto the stack for the comparison and we swap the position of the list value and the comparison element to put them in the right order. <strong><code>IFCMPGT</code></strong> checks if the top element is greater than the element below. If <code>True</code>, we push <code>2</code> and add it to the number remaining on the stack. Otherwise, the value from the list is pushed into the new list with no change. You can use the same type for the new list (like in our example) or you can create a list with a different type too!</p> <div id="bottom-right-wrapper" class="fab-wrapper" style="right:5vw;bottom:4vh;z-index:999;position:fixed;" data-v-f9cfe6e4><div id="bottom-right-action" class="actions-container" style="bottom:-20px;padding-bottom:20px;" data-v-f9cfe6e4><ul class="fab-list" style="display:none;" data-v-f9cfe6e4 data-v-f9cfe6e4><!----><!----></ul></div> <div class="fab-main pointer" style="background-color:#c6b29b;padding:28px;" data-v-f9cfe6e4><i class="md-24 material-icons main" data-v-f9cfe6e4>add</i> <i class="md-24 material-icons close" data-v-f9cfe6e4>add</i></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
       <a href="/chapters/06.html" class="prev">
@@ -423,6 +440,6 @@ First, we add a new list of <code>int</code> on top of the stack. Then, we loop 
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.619c8c83.js" defer></script><script src="/assets/js/2.430b66b2.js" defer></script><script src="/assets/js/16.3dcbedbb.js" defer></script><script src="/assets/js/4.c279c943.js" defer></script><script src="/assets/js/3.550cb5aa.js" defer></script>
+    <script src="/assets/js/app.18800d3b.js" defer></script><script src="/assets/js/2.430b66b2.js" defer></script><script src="/assets/js/16.5316cf4d.js" defer></script><script src="/assets/js/4.c279c943.js" defer></script><script src="/assets/js/3.550cb5aa.js" defer></script>
   </body>
 </html>

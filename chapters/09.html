@@ -23,7 +23,7 @@
     <meta itemprop="name" content="Chapter 9">
     <meta itemprop="description" content="Let's take a little break after a long chapter about pairs and before another long chapter about 3 essential types of Michelson: maps, big maps and sets.">
     <meta itemprop="image" content="https://michelson.baking-bad.org/og.png">
-    <link rel="preload" href="/assets/css/0.styles.41c7ef0c.css" as="style"><link rel="preload" href="/assets/js/app.619c8c83.js" as="script"><link rel="preload" href="/assets/js/2.430b66b2.js" as="script"><link rel="preload" href="/assets/js/18.8c8e2dab.js" as="script"><link rel="preload" href="/assets/js/4.c279c943.js" as="script"><link rel="preload" href="/assets/js/3.550cb5aa.js" as="script"><link rel="prefetch" href="/assets/js/10.39ae3c42.js"><link rel="prefetch" href="/assets/js/11.c8bcd423.js"><link rel="prefetch" href="/assets/js/12.4daeeb25.js"><link rel="prefetch" href="/assets/js/13.a75e832a.js"><link rel="prefetch" href="/assets/js/14.8778eaa1.js"><link rel="prefetch" href="/assets/js/15.8fc30b52.js"><link rel="prefetch" href="/assets/js/16.3dcbedbb.js"><link rel="prefetch" href="/assets/js/17.f4089664.js"><link rel="prefetch" href="/assets/js/19.2f489976.js"><link rel="prefetch" href="/assets/js/20.52755843.js"><link rel="prefetch" href="/assets/js/21.2bcbd1eb.js"><link rel="prefetch" href="/assets/js/22.77994f1a.js"><link rel="prefetch" href="/assets/js/23.cfbbd282.js"><link rel="prefetch" href="/assets/js/24.e396ce94.js"><link rel="prefetch" href="/assets/js/25.2624171d.js"><link rel="prefetch" href="/assets/js/5.b2436255.js"><link rel="prefetch" href="/assets/js/6.cb0bbb2c.js"><link rel="prefetch" href="/assets/js/7.16d6fa11.js"><link rel="prefetch" href="/assets/js/8.c7c848cc.js"><link rel="prefetch" href="/assets/js/9.d1dbceb8.js">
+    <link rel="preload" href="/assets/css/0.styles.41c7ef0c.css" as="style"><link rel="preload" href="/assets/js/app.18800d3b.js" as="script"><link rel="preload" href="/assets/js/2.430b66b2.js" as="script"><link rel="preload" href="/assets/js/18.bc1d5da2.js" as="script"><link rel="preload" href="/assets/js/4.c279c943.js" as="script"><link rel="preload" href="/assets/js/3.550cb5aa.js" as="script"><link rel="prefetch" href="/assets/js/10.39ae3c42.js"><link rel="prefetch" href="/assets/js/11.897dacfb.js"><link rel="prefetch" href="/assets/js/12.083d37d3.js"><link rel="prefetch" href="/assets/js/13.a75e832a.js"><link rel="prefetch" href="/assets/js/14.d7e9078d.js"><link rel="prefetch" href="/assets/js/15.2d0a9cd5.js"><link rel="prefetch" href="/assets/js/16.5316cf4d.js"><link rel="prefetch" href="/assets/js/17.f4089664.js"><link rel="prefetch" href="/assets/js/19.2f489976.js"><link rel="prefetch" href="/assets/js/20.d6a0692d.js"><link rel="prefetch" href="/assets/js/21.2bcbd1eb.js"><link rel="prefetch" href="/assets/js/22.42b58ecc.js"><link rel="prefetch" href="/assets/js/23.cfbbd282.js"><link rel="prefetch" href="/assets/js/24.3069e4b3.js"><link rel="prefetch" href="/assets/js/25.9bb53cdf.js"><link rel="prefetch" href="/assets/js/5.b2436255.js"><link rel="prefetch" href="/assets/js/6.c09f7c7f.js"><link rel="prefetch" href="/assets/js/7.16d6fa11.js"><link rel="prefetch" href="/assets/js/8.c7c848cc.js"><link rel="prefetch" href="/assets/js/9.d1dbceb8.js">
     <link rel="stylesheet" href="/assets/css/0.styles.41c7ef0c.css">
   </head>
   <body>
@@ -53,14 +53,15 @@
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">9</span><span class="token punctuation"> </span><span class="token number">8</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage int;
-parameter nat;
-code { CAR ; INT ; NIL operation ; PAIR };
-RUN: use %default; drop all; push (9, 8);
-CAR: pop (9, 8); push 9;
-INT: pop 9; push 9;
-NIL: push [];
-PAIR: pop [], 9; push ([], 9);</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                 </th><th>type                                    </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">9</pre></td><td><pre style="text-align:left;">int</pre></td></tr></tbody></table></div> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage: updated
+parameter: updated
+code: updated
+BEGIN %default / _ =&gt; (9 * 8)
+CAR / (9 * 8) =&gt; 9
+INT / 9 =&gt; 9
+NIL / _ =&gt; []
+PAIR / [] : 9 =&gt; ([] * 9)
+END %default / ([] * 9) =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                    </th><th>value                                 </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">int</pre></td><td><pre style="text-align:left;">9</pre></td></tr></tbody></table></div> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">int</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">CAR</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
@@ -70,14 +71,15 @@ PAIR: pop [], 9; push ([], 9);</pre></div> <div class="embedded-html"><table><th
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">9</span><span class="token punctuation"> </span><span class="token number">8</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage nat;
-parameter int;
-code { CAR ; ABS ; NIL operation ; PAIR };
-RUN: use %default; drop all; push (9, 8);
-CAR: pop (9, 8); push 9;
-ABS: pop 9; push 9;
-NIL: push [];
-PAIR: pop [], 9; push ([], 9);</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                 </th><th>type                                    </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">9</pre></td><td><pre style="text-align:left;">nat</pre></td></tr></tbody></table></div> <p>You may also want to check if the <code>int</code> value you have in the stack is above zero before turning it into a <code>nat</code> value (because <strong><code>ABS</code></strong> will remove the negative sign of any integer). If it's the case, you can use <strong><code>ISNAT</code></strong>. If the <code>int</code> value is equal or greater than zero, the instruction returns <code>(option nat) (Some value)</code>. If the <code>int</code> value is less than zero, the instruction returns <code>(option nat) (None)</code>:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">int</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage: updated
+parameter: updated
+code: updated
+BEGIN %default / _ =&gt; (9 * 8)
+CAR / (9 * 8) =&gt; 9
+ABS / 9 =&gt; 9
+NIL / _ =&gt; []
+PAIR / [] : 9 =&gt; ([] * 9)
+END %default / ([] * 9) =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                    </th><th>value                                 </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">nat</pre></td><td><pre style="text-align:left;">9</pre></td></tr></tbody></table></div> <p>You may also want to check if the <code>int</code> value you have in the stack is above zero before turning it into a <code>nat</code> value (because <strong><code>ABS</code></strong> will remove the negative sign of any integer). If it's the case, you can use <strong><code>ISNAT</code></strong>. If the <code>int</code> value is equal or greater than zero, the instruction returns <code>(option nat) (Some value)</code>. If the <code>int</code> value is less than zero, the instruction returns <code>(option nat) (None)</code>:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">int</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">CAR</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
@@ -91,15 +93,16 @@ PAIR: pop [], 9; push ([], 9);</pre></div> <div class="embedded-html"><table><th
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">9</span><span class="token punctuation"> </span><span class="token number">8</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage nat;
-parameter int;
-code { CAR ; ISNAT ; { IF_NONE { { UNIT ; FAILWITH } } { NIL operation ; PAIR } } };
-RUN: use %default; drop all; push (9, 8);
-CAR: pop (9, 8); push 9;
-ISNAT: pop 9; push (9,);
-IF_NONE: pop (9,); push 9;
-NIL: push [];
-PAIR: pop [], 9; push ([], 9);</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                 </th><th>type                                    </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">9</pre></td><td><pre style="text-align:left;">nat</pre></td></tr></tbody></table></div> <p>Now if you change <code>9</code> for <code>-9</code>, you will see the contract fail as the negative integer triggers the <strong><code>FAIL</code></strong> instruction.</p> <p>You can also use &quot;hacks&quot; to cast some values. One of the most frequently encountered is a hack based on the subtraction. Let's say you need to cast a <code>timestamp</code> into an <code>int</code>. There is no instruction for that. However, if you subtract a <code>timestamp</code> from another <code>timestamp</code>, you get an <code>int</code>. You can then create a <code>timestamp</code> equal to zero and subtract it from the <code>timestamp</code> you want to cast into an <code>int</code>:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">unit</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>parameter: updated
+storage: updated
+code: updated
+BEGIN %default / _ =&gt; (9 * 8)
+CAR / (9 * 8) =&gt; 9
+ISNAT / 9 =&gt; 9?
+IF_NONE / 9? =&gt; 9
+NIL / _ =&gt; []
+PAIR / [] : 9 =&gt; ([] * 9)
+END %default / ([] * 9) =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                    </th><th>value                                 </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">nat</pre></td><td><pre style="text-align:left;">9</pre></td></tr></tbody></table></div> <p>Now if you change <code>9</code> for <code>-9</code>, you will see the contract fail as the negative integer triggers the <strong><code>FAIL</code></strong> instruction.</p> <p>You can also use &quot;hacks&quot; to cast some values. One of the most frequently encountered is a hack based on the subtraction. Let's say you need to cast a <code>timestamp</code> into an <code>int</code>. There is no instruction for that. However, if you subtract a <code>timestamp</code> from another <code>timestamp</code>, you get an <code>int</code>. You can then create a <code>timestamp</code> equal to zero and subtract it from the <code>timestamp</code> you want to cast into an <code>int</code>:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">unit</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">int</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">DROP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
@@ -111,16 +114,17 @@ PAIR: pop [], 9; push ([], 9);</pre></div> <div class="embedded-html"><table><th
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">Unit</span><span class="token punctuation"> </span><span class="token number">0</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage int;
-parameter unit;
-code { DROP ; PUSH timestamp 0 ; NOW ; SUB ; NIL operation ; PAIR };
-RUN: use %default; drop all; push (Unit, 0);
-DROP: pop (Unit, 0);
-PUSH: push 0;
-NOW: push 1594026174;
-SUB: pop 1594026174, 0; push 1594026174;
-NIL: push [];
-PAIR: pop [], 1594026174; push ([], 1594026174);</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                          </th><th>type                                    </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">1594026174</pre></td><td><pre style="text-align:left;">int</pre></td></tr></tbody></table></div> <p>Now you have an <code>int</code> whose value is the same as the provided <code>timestamp</code>!</p> <p>With a little bit of imagination, it is also possible to cast other values, for example a <code>mutez</code> into a <code>nat</code>! This time, we can use <strong><code>EDIV</code></strong> to turn a <code>mutez</code> value into a <code>nat</code> value. When you divide two <code>mutez</code> values together, you get an optional value with a pair that contains a <code>nat</code> (the result) in the left field. When you divide a value by <code>1</code>, the result will be the same value, so if you divide <code>mutez 22</code> by <code>mutez 1</code>, the result will be <code>nat 22</code> as illustrated below:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">unit</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>parameter: updated
+storage: updated
+code: updated
+BEGIN %default / _ =&gt; (Unit * 0)
+DROP / (Unit * 0) =&gt; _
+PUSH / _ =&gt; 0
+NOW / _ =&gt; 0
+SUB / 0 : 0 =&gt; 0
+NIL / _ =&gt; []
+PAIR / [] : 0 =&gt; ([] * 0)
+END %default / ([] * 0) =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                    </th><th>value                                 </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">int</pre></td><td><pre style="text-align:left;">0</pre></td></tr></tbody></table></div> <p>Now you have an <code>int</code> whose value is the same as the provided <code>timestamp</code>!</p> <p>With a little bit of imagination, it is also possible to cast other values, for example a <code>mutez</code> into a <code>nat</code>! This time, we can use <strong><code>EDIV</code></strong> to turn a <code>mutez</code> value into a <code>nat</code> value. When you divide two <code>mutez</code> values together, you get an optional value with a pair that contains a <code>nat</code> (the result) in the left field. When you divide a value by <code>1</code>, the result will be the same value, so if you divide <code>mutez 22</code> by <code>mutez 1</code>, the result will be <code>nat 22</code> as illustrated below:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">unit</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">DROP</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
@@ -137,18 +141,19 @@ PAIR: pop [], 1594026174; push ([], 1594026174);</pre></div> <div class="embedde
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">Unit</span><span class="token punctuation"> </span><span class="token number">0</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage nat;
-parameter unit;
-code { DROP ; PUSH mutez 1 ; PUSH mutez 5566778899 ; EDIV ; { IF_NONE { { UNIT ; FAILWITH } } { CAR ; NIL operation ; PAIR } } };
-RUN: use %default; drop all; push (Unit, 0);
-DROP: pop (Unit, 0);
-PUSH: push 1;
-PUSH: push 5566778899;
-EDIV: pop 5566778899, 1; push ((5566778899, 0),);
-IF_NONE: pop ((5566778899, 0),); push (5566778899, 0);
-CAR: pop (5566778899, 0); push 5566778899;
-NIL: push [];
-PAIR: pop [], 5566778899; push ([], 5566778899);</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                          </th><th>type                                    </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">5566778899</pre></td><td><pre style="text-align:left;">nat</pre></td></tr></tbody></table></div> <p>Finally, it is also possible to cast a contract to its address and an adress to a contract. Observe the following example:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">contract</span><span class="token punctuation"> </span><span class="token class-name">unit</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>parameter: updated
+storage: updated
+code: updated
+BEGIN %default / _ =&gt; (Unit * 0)
+DROP / (Unit * 0) =&gt; _
+PUSH / _ =&gt; 0.000001
+PUSH / _ =&gt; 5566.778899
+EDIV / 5566.778899 : 0.000001 =&gt; (5566778899 * 0)?
+IF_NONE / (5566778899 * 0)? =&gt; (5566778899 * 0)
+CAR / (5566778899 * 0) =&gt; 5566778899
+NIL / _ =&gt; []
+PAIR / [] : 5566778899 =&gt; ([] * 5566778899)
+END %default / ([] * 5566778899) =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                    </th><th>value                                          </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">nat</pre></td><td><pre style="text-align:left;">5566778899</pre></td></tr></tbody></table></div> <p>Finally, it is also possible to cast a contract to its address and an adress to a contract. Observe the following example:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">contract</span><span class="token punctuation"> </span><span class="token class-name">unit</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">address</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">CAR</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
@@ -157,15 +162,16 @@ PAIR: pop [], 5566778899; push ([], 5566778899);</pre></div> <div class="embedde
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">PAIR</span><span class="token punctuation">
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
-</span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">&quot;tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb&quot;</span><span class="token punctuation"> </span><span class="token number">&quot;0&quot;</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage address;
-parameter (contract unit);
-code { CAR ; ADDRESS ; NIL operation ; PAIR };
-RUN: use %default; drop all; push ('tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb', '0');
-CAR: pop ('tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb', '0'); push tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb;
-ADDRESS: pop tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb; push tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb;
-NIL: push [];
-PAIR: pop [], tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb; push ([], 'tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb');</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                                                      </th><th>type                                        </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">&quot;tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb&quot;</pre></td><td><pre style="text-align:left;">address</pre></td></tr></tbody></table></div> <p>In this example, we turn a <code>(contract unit)</code> type into an address. It is also possible to do the opposite:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">contract</span><span class="token punctuation"> </span><span class="token class-name">unit</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">&quot;KT1X3zxdTzPB9DgVzA3ad6dgZe9JEamoaeRy&quot;</span><span class="token punctuation"> </span><span class="token number">&quot;tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb&quot;</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>parameter: updated
+storage: updated
+code: updated
+BEGIN %default / _ =&gt; (KT1X3z…eRy%default * tz1VSU…cjb)
+CAR / (KT1X3z…eRy%default * tz1VSU…cjb) =&gt; KT1X3z…eRy%default
+ADDRESS / KT1X3z…eRy%default =&gt; KT1X3z…eRy
+NIL / _ =&gt; []
+PAIR / [] : KT1X3z…eRy =&gt; ([] * KT1X3z…eRy)
+END %default / ([] * KT1X3z…eRy) =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                        </th><th>value                                                                    </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">address</pre></td><td><pre style="text-align:left;">KT1X3zxdTzPB9DgVzA3ad6dgZe9JEamoaeRy</pre></td></tr></tbody></table></div> <p>In this example, we turn a <code>(contract unit)</code> type into an address. It is also possible to do the opposite:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">contract</span><span class="token punctuation"> </span><span class="token class-name">unit</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">address</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">CAR</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
@@ -178,16 +184,18 @@ PAIR: pop [], tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb; push ([], 'tz1VSUr8wwNhLAzem
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation"> </span><span class="token variable">FAIL</span><span class="token punctuation"> </span><span class="token punctuation">}</span><span class="token punctuation">
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
-</span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">&quot;tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb&quot;</span><span class="token punctuation"> </span><span class="token number">&quot;0&quot;</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage (contract unit);
-parameter address;
-code { CAR ; CONTRACT unit ; { IF_NONE { { UNIT ; FAILWITH } } { NIL operation ; PAIR } } };
-RUN: use %default; drop all; push ('tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb', '0');
-CAR: pop ('tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb', '0'); push tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb;
-CONTRACT: pop tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb; skip check; push ('tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb%default',);
-IF_NONE: pop ('tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb%default',); push tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb%default;
-NIL: push [];
-PAIR: pop [], tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb%default; push ([], 'tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb%default');</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                                                              </th><th>type                                              </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">&quot;tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb%default&quot;</pre></td><td><pre style="text-align:left;">contract unit</pre></td></tr></tbody></table></div> <p>If you remember from the Chapter 5, this step of turning an address into a contract address of type <code>(contract unit)</code> is also a necessary step of transferring tokens.</p> <h2 id="working-with-bytes"><a href="#working-with-bytes" class="header-anchor">#</a> Working with bytes</h2> <p>Although a rather uncommon type, Michelson allows us to manipulate bytes. All the instructions available for strings are also available for bytes (namely <strong><code>COMPARE</code></strong>, <strong><code>CONCAT</code></strong>, <strong><code>SIZE</code></strong> and <strong><code>SLICE</code></strong>) + two extra instructions to pack (value -&gt; bytes) and unpack (bytes -&gt; value) bytes. Most of the times you will have to use bytes is when you will use cryptographic instructions, let's check an example:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">bytes</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">&quot;tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb&quot;</span><span class="token punctuation"> </span><span class="token number">&quot;KT1X3zxdTzPB9DgVzA3ad6dgZe9JEamoaeRy&quot;</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage: updated
+parameter: updated
+code: updated
+BEGIN %default / _ =&gt; (tz1VSU…cjb * KT1X3z…eRy%default)
+CAR / (tz1VSU…cjb * KT1X3z…eRy%default) =&gt; tz1VSU…cjb
+CONTRACT: skip type checking for tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb
+CONTRACT / tz1VSU…cjb =&gt; tz1VSU…cjb%default?
+IF_NONE / tz1VSU…cjb%default? =&gt; tz1VSU…cjb%default
+NIL / _ =&gt; []
+PAIR / [] : tz1VSU…cjb%default =&gt; ([] * tz1VSU…cjb%default)
+END %default / ([] * tz1VSU…cjb%default) =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                         </th><th>value                                                                    </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">contract</pre></td><td><pre style="text-align:left;">tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb</pre></td></tr></tbody></table></div> <p>If you remember from the Chapter 5, this step of turning an address into a contract address of type <code>(contract unit)</code> is also a necessary step of transferring tokens.</p> <h2 id="working-with-bytes"><a href="#working-with-bytes" class="header-anchor">#</a> Working with bytes</h2> <p>Although a rather uncommon type, Michelson allows us to manipulate bytes. All the instructions available for strings are also available for bytes (namely <strong><code>COMPARE</code></strong>, <strong><code>CONCAT</code></strong>, <strong><code>SIZE</code></strong> and <strong><code>SLICE</code></strong>) + two extra instructions to pack (value -&gt; bytes) and unpack (bytes -&gt; value) bytes. Most of the times you will have to use bytes is when you will use cryptographic instructions, let's check an example:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">bytes</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">CAR</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
@@ -198,15 +206,16 @@ PAIR: pop [], tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb%default; push ([], 'tz1VSUr8w
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">12345</span><span class="token punctuation"> </span>0x<span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage bytes;
-parameter nat;
-code { CAR ; PACK ; SHA256 ; NIL operation ; PAIR };
-RUN: use %default; drop all; push (12345, b'');
-CAR: pop (12345, b''); push 12345;
-PACK: pop 12345; push 0500b9c001;
-SHA256: pop 0500b9c001; push cea356435ff4eee1981f2e2ddc81bee203b3af767c48f97fd84b64fa767d2285;
-NIL: push [];
-PAIR: pop [], cea356435ff4eee1981f2e2ddc81bee203b3af767c48f97fd84b64fa767d2285; push ([], b'\xce\xa3VC_\xf4\xee\xe1\x98\x1f.-\xdc\x81\xbe\xe2\x03\xb3\xafv|H\xf9\x7f\xd8Kd\xfav}&quot;\x85');</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                                                                                  </th><th>type                                      </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">0xcea356435ff4eee1981f2e2ddc81bee203b3af767c48f97fd84b64fa767d2285</pre></td><td><pre style="text-align:left;">bytes</pre></td></tr></tbody></table></div> <p>This simple contract takes a value of type <code>nat</code>, converts it to <code>bytes</code> with the <strong><code>PACK</code></strong> instruction, gets its SHA256 hash and saves it in the storage. We can use the result of the <strong><code>PACK</code></strong> instruction to write a contract that does the inverse:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage: updated
+parameter: updated
+code: updated
+BEGIN %default / _ =&gt; (12345 * 0x)
+CAR / (12345 * 0x) =&gt; 12345
+PACK / 12345 =&gt; 0x0500b9c001
+SHA256 / 0x0500b9c001 =&gt; 0xcea356435ff4eee1981f2e2ddc81bee203b3af767c48f97fd84b64fa767d2285
+NIL / _ =&gt; []
+PAIR / [] : 0xcea356435ff4eee1981f2e2ddc81bee203b3af767c48f97fd84b64fa767d2285 =&gt; ([] * 0xcea356435ff4eee1981f2e2ddc81bee203b3af767c48f97fd84b64fa767d2285)
+END %default / ([] * 0xcea356435ff4eee1981f2e2ddc81bee203b3af767c48f97fd84b64fa767d2285) =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                      </th><th>value                                                                                                </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">bytes</pre></td><td><pre style="text-align:left;">cea356435ff4eee1981f2e2ddc81bee203b3af767c48f97fd84b64fa767d2285</pre></td></tr></tbody></table></div> <p>This simple contract takes a value of type <code>nat</code>, converts it to <code>bytes</code> with the <strong><code>PACK</code></strong> instruction, gets its SHA256 hash and saves it in the storage. We can use the result of the <strong><code>PACK</code></strong> instruction to write a contract that does the inverse:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token class-name">bytes</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">CAR</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
@@ -217,15 +226,16 @@ PAIR: pop [], cea356435ff4eee1981f2e2ddc81bee203b3af767c48f97fd84b64fa767d2285; 
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token number">0x0500b9c001</span><span class="token punctuation"> </span><span class="token number">0</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage nat;
-parameter bytes;
-code { CAR ; UNPACK nat ; { IF_NONE { { UNIT ; FAILWITH } } { NIL operation ; PAIR } } };
-RUN: use %default; drop all; push (b'\x05\x00\xb9\xc0\x01', 0);
-CAR: pop (b'\x05\x00\xb9\xc0\x01', 0); push 0500b9c001;
-UNPACK: pop 0500b9c001; push (12345,);
-IF_NONE: pop (12345,); push 12345;
-NIL: push [];
-PAIR: pop [], 12345; push ([], 12345);</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                     </th><th>type                                    </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">12345</pre></td><td><pre style="text-align:left;">nat</pre></td></tr></tbody></table></div> <p>At the end of this contract, we get back our <code>nat</code> value of <code>12345</code> 😃</p> <p>Now, let's try to use another operation on bytes:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">pair</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage: updated
+parameter: updated
+code: updated
+BEGIN %default / _ =&gt; (0x0500b9c001 * 0)
+CAR / (0x0500b9c001 * 0) =&gt; 0x0500b9c001
+UNPACK / 0x0500b9c001 =&gt; 12345?
+IF_NONE / 12345? =&gt; 12345
+NIL / _ =&gt; []
+PAIR / [] : 12345 =&gt; ([] * 12345)
+END %default / ([] * 12345) =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                    </th><th>value                                     </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">nat</pre></td><td><pre style="text-align:left;">12345</pre></td></tr></tbody></table></div> <p>At the end of this contract, we get back our <code>nat</code> value of <code>12345</code> 😃</p> <p>Now, let's try to use another operation on bytes:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">pair</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">int</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">CAR</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
@@ -239,22 +249,19 @@ PAIR: pop [], 12345; push ([], 12345);</pre></div> <div class="embedded-html"><t
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token number">Pair</span><span class="token punctuation"> </span><span class="token number">44</span><span class="token punctuation"> </span><span class="token number">33</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token number">0</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage int;
-parameter (pair nat nat);
-code { CAR ; { DUP ; CAR ; DIP { CDR } } ; PACK ; SWAP ; PACK ; COMPARE ; NIL operation ; PAIR };
-RUN: use %default; drop all; push ((44, 33), 0);
-CAR: pop ((44, 33), 0); push (44, 33);
-DUP: push (44, 33);
-CAR: pop (44, 33); push 44;
-DIP: protect 1 item(s);
-CDR: pop (44, 33); push 33;
-restore 1 item(s);
-PACK: pop 44; push 05002c;
-SWAP: pop 05002c, 33; push 05002c; push 33;
-PACK: pop 33; push 050021;
-COMPARE: pop 050021, 05002c; push -1;
-NIL: push [];
-PAIR: pop [], -1; push ([], -1);</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                  </th><th>type                                    </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">-1</pre></td><td><pre style="text-align:left;">int</pre></td></tr></tbody></table></div> <p>It is also possible to compare two <code>byte</code> values with the <strong><code>COMPARE</code></strong> instruction. Just like when you compare two comparable values, the instruction returns <code>-1</code> is the first one is less than the second one, <code>0</code> if they are both equal and <code>1</code> if the first one is greater than the second one. Try to change the values in the pair passed in the parameter to see it working.</p> <p>We can also extend our previous example and compare the sizes of the bytes:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">pair</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>parameter: updated
+storage: updated
+code: updated
+BEGIN %default / _ =&gt; ((44 * 33) * 0)
+CAR / ((44 * 33) * 0) =&gt; (44 * 33)
+UNPAIR / (44 * 33) =&gt; 44 : 33
+PACK / 44 =&gt; 0x05002c
+SWAP / 0x05002c : 33 =&gt; 33 : 0x05002c
+PACK / 33 =&gt; 0x050021
+COMPARE / 0x050021 : 0x05002c =&gt; -1
+NIL / _ =&gt; []
+PAIR / [] : -1 =&gt; ([] * -1)
+END %default / ([] * -1) =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                    </th><th>value                                  </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">int</pre></td><td><pre style="text-align:left;">-1</pre></td></tr></tbody></table></div> <p>It is also possible to compare two <code>byte</code> values with the <strong><code>COMPARE</code></strong> instruction. Just like when you compare two comparable values, the instruction returns <code>-1</code> is the first one is less than the second one, <code>0</code> if they are both equal and <code>1</code> if the first one is greater than the second one. Try to change the values in the pair passed in the parameter to see it working.</p> <p>We can also extend our previous example and compare the sizes of the bytes:</p> <div class="language-Michelson extra-class"><pre class="language-Michelson"><code class="language-Michelson"><span class="token keyword">parameter</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token class-name">pair</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation"> </span><span class="token class-name">nat</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">storage</span><span class="token punctuation"> </span><span class="token class-name">int</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token keyword">code</span><span class="token punctuation"> </span><span class="token punctuation">{</span><span class="token punctuation">
 </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token punctuation"> </span><span class="token operator">CAR</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
@@ -270,24 +277,21 @@ PAIR: pop [], -1; push ([], -1);</pre></div> <div class="embedded-html"><table><
 </span><span class="token punctuation">}</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
 </span><span class="token punctuation">
 </span><span class="token keyword">RUN</span><span class="token punctuation"> </span><span class="token attr-name">%default</span><span class="token punctuation"> </span><span class="token punctuation">(</span><span class="token number">Pair</span><span class="token punctuation"> </span><span class="token number">44</span><span class="token punctuation"> </span><span class="token number">33</span><span class="token punctuation">)</span><span class="token punctuation"> </span><span class="token number">0</span><span class="token punctuation"> </span><span class="token punctuation">;</span><span class="token punctuation">
-</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>storage int;
-parameter (pair nat nat);
-code { CAR ; { DUP ; CAR ; DIP { CDR } } ; PACK ; SIZE ; SWAP ; PACK ; SIZE ; COMPARE ; NIL operation ; PAIR };
-RUN: use %default; drop all; push ((44, 33), 0);
-CAR: pop ((44, 33), 0); push (44, 33);
-DUP: push (44, 33);
-CAR: pop (44, 33); push 44;
-DIP: protect 1 item(s);
-CDR: pop (44, 33); push 33;
-restore 1 item(s);
-PACK: pop 44; push 05002c;
-SIZE: pop 05002c; push 3;
-SWAP: pop 3, 33; push 3; push 33;
-PACK: pop 33; push 050021;
-SIZE: pop 050021; push 3;
-COMPARE: pop 3, 3; push 0;
-NIL: push [];
-PAIR: pop [], 0; push ([], 0);</pre></div> <div class="embedded-html"><table><thead><tr><th>value                                 </th><th>type                                    </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">0</pre></td><td><pre style="text-align:left;">int</pre></td></tr></tbody></table></div> <p>As you can see from the <code>0</code> returned by the <strong><code>COMPARE</code></strong> instruction, the two bytes we created have the same size.</p> <div class="custom-block warning"><p class="custom-block-title">NOTE</p> <p>not all types can be packed, if you want to know which ones are and are not, you can read the <a href="https://michelson.nomadic-labs.com/#types" target="_blank" rel="noopener noreferrer">Michelson reference from Nomadic Labs<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> and check in the <code>PA</code> column.</p></div> <div id="bottom-right-wrapper" class="fab-wrapper" style="right:5vw;bottom:4vh;z-index:999;position:fixed;" data-v-f9cfe6e4><div id="bottom-right-action" class="actions-container" style="bottom:-20px;padding-bottom:20px;" data-v-f9cfe6e4><ul class="fab-list" style="display:none;" data-v-f9cfe6e4 data-v-f9cfe6e4><!----><!----></ul></div> <div class="fab-main pointer" style="background-color:#c6b29b;padding:28px;" data-v-f9cfe6e4><i class="md-24 material-icons main" data-v-f9cfe6e4>add</i> <i class="md-24 material-icons close" data-v-f9cfe6e4>add</i></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+</span></code></pre></div><div class="stdout"><pre><span class="stream-name">stdout</span><br>parameter: updated
+storage: updated
+code: updated
+BEGIN %default / _ =&gt; ((44 * 33) * 0)
+CAR / ((44 * 33) * 0) =&gt; (44 * 33)
+UNPAIR / (44 * 33) =&gt; 44 : 33
+PACK / 44 =&gt; 0x05002c
+SIZE / 0x05002c =&gt; 3
+SWAP / 3 : 33 =&gt; 33 : 3
+PACK / 33 =&gt; 0x050021
+SIZE / 0x050021 =&gt; 3
+COMPARE / 3 : 3 =&gt; 0
+NIL / _ =&gt; []
+PAIR / [] : 0 =&gt; ([] * 0)
+END %default / ([] * 0) =&gt; _</pre></div> <div class="embedded-html"><h4>Operations</h4><h4>Storage</h4><table><thead><tr><th>type                                    </th><th>value                                 </th></tr></thead> <tbody><tr><td><pre style="text-align:left;">int</pre></td><td><pre style="text-align:left;">0</pre></td></tr></tbody></table></div> <p>As you can see from the <code>0</code> returned by the <strong><code>COMPARE</code></strong> instruction, the two bytes we created have the same size.</p> <div class="custom-block warning"><p class="custom-block-title">NOTE</p> <p>not all types can be packed, if you want to know which ones are and are not, you can read the <a href="https://michelson.nomadic-labs.com/#types" target="_blank" rel="noopener noreferrer">Michelson reference from Nomadic Labs<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> and check in the <code>PA</code> column.</p></div> <div id="bottom-right-wrapper" class="fab-wrapper" style="right:5vw;bottom:4vh;z-index:999;position:fixed;" data-v-f9cfe6e4><div id="bottom-right-action" class="actions-container" style="bottom:-20px;padding-bottom:20px;" data-v-f9cfe6e4><ul class="fab-list" style="display:none;" data-v-f9cfe6e4 data-v-f9cfe6e4><!----><!----></ul></div> <div class="fab-main pointer" style="background-color:#c6b29b;padding:28px;" data-v-f9cfe6e4><i class="md-24 material-icons main" data-v-f9cfe6e4>add</i> <i class="md-24 material-icons close" data-v-f9cfe6e4>add</i></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
       <a href="/chapters/08.html" class="prev">
         Chapter 8
@@ -296,6 +300,6 @@ PAIR: pop [], 0; push ([], 0);</pre></div> <div class="embedded-html"><table><th
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.619c8c83.js" defer></script><script src="/assets/js/2.430b66b2.js" defer></script><script src="/assets/js/18.8c8e2dab.js" defer></script><script src="/assets/js/4.c279c943.js" defer></script><script src="/assets/js/3.550cb5aa.js" defer></script>
+    <script src="/assets/js/app.18800d3b.js" defer></script><script src="/assets/js/2.430b66b2.js" defer></script><script src="/assets/js/18.bc1d5da2.js" defer></script><script src="/assets/js/4.c279c943.js" defer></script><script src="/assets/js/3.550cb5aa.js" defer></script>
   </body>
 </html>
