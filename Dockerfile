@@ -1,4 +1,4 @@
-ROM python:3.7-slim-buster
+FROM python:3.7-slim-buster
 
 ARG NB_USER=mickey
 ARG NB_UID=1000
@@ -9,8 +9,7 @@ RUN apt update && \
     apt install -y build-essential pkg-config libsodium-dev libsecp256k1-dev libgmp-dev && \
     rm -rf /var/lib/apt/lists/*
 
-COPY . /tmp/pytezos
-RUN pip install notebook jupyter-client /tmp/pytezos
+RUN pip install notebook jupyter-client pytezos
 RUN michelson-kernel install
 
 ENV USER ${NB_USER}
@@ -21,7 +20,7 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 
-COPY binder/*.ipynb ${HOME}/
+COPY notebooks/ ${HOME}/notebooks
 RUN chown -R ${NB_USER}:${NB_USER} ${HOME}/
 
 WORKDIR ${HOME}
