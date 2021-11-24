@@ -43,7 +43,8 @@ The recomended way is [pyenv](https://github.com/pyenv/pyenv-installer).
 Make sure you have installed all the [dependencies](https://github.com/pyenv/pyenv/wiki/Common-build-problems) first.
 
 ```
-pip install jupyter michelson-kernel
+pip install jupyter pytezos
+michelson-kernel install
 jupyter notebook
 ```
 
