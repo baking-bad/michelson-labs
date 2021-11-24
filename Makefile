@@ -16,12 +16,12 @@ postprocess:
 	cd $$MDIR && sed -r -i 's/^>\sTip:\s(.*)$$/::: tip\n\1\n:::/g' *.md
 
 docs:
-	rm docs/michelson/[0-9]*.md || true
-	rm docs/pytezos/[0-9]*.md || true
-	jupyter nbconvert notebooks/michelson/*.ipynb --TemplateExporter.template_file=jupyter.tpl --Exporter.preprocessors='["preprocess.RemoveExerciceCells", "preprocess.AddBinderComponent"]' --to markdown --output-dir docs/michelson
-	jupyter nbconvert notebooks/pytezos/*.ipynb --TemplateExporter.template_file=jupyter.tpl --Exporter.preprocessors='["preprocess.AddBinderComponent"]' --to markdown --output-dir docs/pytezos
-	MDIR=docs/michelson $(MAKE) postprocess
-	MDIR=docs/pytezos $(MAKE) postprocess
+	rm docs/chapters/*.md || true
+	jupyter nbconvert notebooks/tutorials/**/*.ipynb --TemplateExporter.template_file=jupyter.tpl --Exporter.preprocessors='["preprocess.RemoveExerciceCells", "preprocess.AddBinderComponent"]' --to markdown --output-dir docs/chapters
+	MDIR=docs/chapters $(MAKE) postprocess
+	# rm docs/advanced/*.md || true
+	# jupyter nbconvert notebooks/examples/*.ipynb --TemplateExporter.template_file=jupyter.tpl --Exporter.preprocessors=[\"preprocess.AddBinderComponent\"] --to markdown --output-dir docs/advanced
+	# MDIR=docs/advanced $(MAKE) postprocess
 
 build:
 	yarn build

@@ -17,9 +17,3 @@
     <pre><span class="stream-name">result</span>{{ output.data['text/plain'] | e }}</pre>
 </div>
 {% endblock data_text %}
-
-{% block error %}
-<div class="error">
-    <pre>{{ output.ename }}: {{ output.evalue }}</pre>
-</div>
-{% endblock error %}
